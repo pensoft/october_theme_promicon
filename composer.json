@@ -2,7 +2,7 @@
     "name": "october/pensoft-promicon-theme",
     "type": "october-theme",
     "description": "Pensoft Promicon October CMS theme",
-    "keywords": ["october", "cms", "demo", "theme"],
+    "keywords": ["october", "cms", "promicon", "theme"],
     "authors": [
         {
             "name": "Kremena Kaleva",
