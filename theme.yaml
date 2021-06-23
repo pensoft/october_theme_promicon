@@ -2,7 +2,7 @@ name: "Promicon"
 author: "Pensoft"
 homepage: "https://pensoft.net"
 code: "Pensoft.PensoftPromicon"
-authorCode: "Pensoft.PensoftPromicon"
+authorCode: ""
 description: "Demonstrates the basic concepts of the front-end theming."
 previewImage: "assets/images/preview.png"
 require:
