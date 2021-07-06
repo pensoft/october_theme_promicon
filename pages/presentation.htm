@@ -25,7 +25,7 @@ function onStart(){
 	if(post('download')){
 		$file = File::find((int)post('download'));
 		$file_name = $file->getLocalPath();
-		$recordName = post('file_name') ? post('file_name') : 'SHOWCASE_presentation';
+		$recordName = post('file_name') ? post('file_name') : 'PROMICON_presentation';
 		$ext= $file->getExtension();
 
 if (file_exists($file_name)) {

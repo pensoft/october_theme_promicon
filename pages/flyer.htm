@@ -18,14 +18,13 @@ pageNumber = "{{ :page }}"
 <?php
 use Pensoft\Media\Models\Flyers;
 use System\Models\File;
-use Redirect;
 
 function onStart(){
 	$this['mediaFlyersList'] =  Flyers::get();
-	if(post('download')){
-		$file = File::find((int)post('download'));
+	if(get('download')){
+		$file = File::find((int)get('download'));
 		$file_name = $file->getLocalPath();
-		$recordName = post('file_name') ? post('file_name') : 'SHOWCASE_flyer';
+		$recordName = get('file_name') ? get('file_name') : 'PROMICON_flyer';
 		$ext= $file->getExtension();
 
 		if (file_exists($file_name)) {
@@ -50,6 +49,8 @@ function onStart(){
 ?>
 ==
 <div class="container">
+	<a href="/media-center" class="back-to"> &#10094; Back to Media center</a>
+	<h1 class="display-1">Broshures and posters</h1>
 	<div class="row">
 	{% set records = mediaFlyersList %}
 	{% set displayColumn = mediaFlyersList.displayColumn %}
@@ -62,17 +63,15 @@ function onStart(){
 	{# Use spaceless tag to remove spaces inside the A tag. #}
 	{% spaceless %}
 	{% if record.flyer_image %}
-		<div class="col-xs-12 col-lg-4">
-			<div class="story broshure_and_poster">
-				<p align="center"><a href="{{record.file.path}}" target="_blank"><img src="{{record.flyer_image.thumb(250,250,{'mode':'crop'})}}" title="{{record.name}}"> </a></p>
+		<div class="col-xs">
+			<div class="card-container">
+				<span class="card_image_container" style="background: url({{record.file.thumb(196,196,{'mode':'crop'})}}) center center no-repeat;" title="{{record.name}}"></span>
+				<span class="card_title">{{record.name}}, {{record.file.size}}</span>
+				<br><a href="{{ ''| page }}?{{queries}}&download={{record.file.id}}&file_name={{record.name|replace({' ': '_'})}}" title="{{record.name}}" class="btn btn-primary">Download</a>
 			</div>
-			<div class="media-size text-center">{{record.name}}</div>
-			{% if record.file %}
-			<div class="media-btn_broshure_and_poster text-center mt-1 mb-1"><a class="btn btn-secondary" href="{{ ''| page }}?{{queries}}&download={{record.file.id}}&file_name={{record.name|replace({' ': '_'})}}">Download</a></div>
-
-			<div class="media-size text-center">{{record.file.extension | uppercase}} {{record.file.size }}</div>
-			{% endif %}
 		</div>
+
+
 	{% endif %}
 
 	{% endspaceless %}

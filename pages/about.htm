@@ -1,42 +1,30 @@
-title = "About the project"
 url = "/about"
 layout = "default"
-meta_description = "about page"
+title = "About us"
 is_hidden = 0
+meta_description = "about page"
 seo_keywords = "keywords"
 robot_index = "index"
 robot_follow = "follow"
 
-[siteSearchInclude]
-
 [jumbotron aboutContext]
-jumbotron = "background"
+jumbotron = "about"
 title = 1
-background = "#ffffff"
-
-[jumbotron theProject]
-jumbotron = "project"
-title = 1
-background = "unset"
+background = "transperant"
 
 [accordion]
 maxItems = 10
-accordion = 2
+accordion = 1
 elementId = "structure"
 active = 0
 collapsible = "false"
-heightStyle = "fill"
+heightStyle = "content"
 iconsHeader = "ui-icon-blank"
 iconsHeaderActive = "ui-icon-blank"
-templates = "template2"
+templates = "template3"
 ==
-{% component 'siteSearchInclude' %}
-
 {% component 'aboutContext' %}
 
-<div class="project_background">
-    {% component 'theProject' %}
-</div>
 
 <div class="work_packages">
     <div class="container">

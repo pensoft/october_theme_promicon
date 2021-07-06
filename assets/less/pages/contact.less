@@ -1,16 +1,57 @@
-.card-container {
-    .breakpoint-small-down({
-      width: -webkit-fill-available!important;
-    });
+
+.contact_info{
+  .card-container {
+    width: 100%;
+    .cards{
+      justify-content: flex-start!important;
+    }
+   .card{
+     border: none;
+     border-radius: 5px;
+     padding: 20px!important;
+     margin: 20px 0!important;
+     font-size: 1em;
+     width: 196px;
+     height: auto;
+     background: @white-color;
+     -moz-box-shadow: 0 0 20px #0000001A;
+     -webkit-box-shadow: 0 0 20px #0000001A;
+     box-shadow: 0 0 20px #0000001A;
+     margin-right: 20px!important;
+     .breakpoint-small-down({
+      margin: 20px auto!important;
+     });
+   }
+
+    .country{
+      display: none;
+    }
+    .p-mail, .p-position{
+      display: none;
+    }
+    .position{
+      font-size: 16px;
+      color: @default-color;
+      font-size: 20px;
+      line-height: 32px;
+      font-weight: 600;
+      padding: 0!important;
+    }
+    .email{
+      padding: 20px 0!important;
+      font-size: 16px;
+      text-decoration: underline;
+    }
+  }
 }
 
+
 .card.profile {
-    width: 370px !important;
-    background-color: @secondary-color;
+    width: 307px !important;
     padding: 20px !important;
-    margin-bottom: 1rem;
     .card-img-top {
-        margin-bottom: 1rem;
+        margin: 0 0 1rem 0!important;
+        width: 50%;
     }
 }
 
@@ -25,12 +66,13 @@
 .card.profile .card-header {
     font-weight: bold;
     text-align: left !important;
-    color: #1a3354;
-    margin-bottom: 1rem;
+    color: @default-color;
+    font-size: 20px;
+    line-height: 32px;
+    font-weight: 600;
 }
 
 .contact_info h3{
-  font-family: Muli;
   font-weight: bold;
 }
 

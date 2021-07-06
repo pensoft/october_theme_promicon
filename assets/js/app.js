@@ -17,18 +17,22 @@ var keepFooter = function(documentHasScroll){
 
 
 $(document).ready(function() {
-	var loggedInMenuNavbar = $('.navbar-loggedin-user');
-	loggedInMenuNavbar.find('#menu').removeAttr('id');
+	var headerNavbar = $('#headerNavbar');
+	var width100 = $('.width100');
+	var innerWidth = $('body').innerWidth();
+	headerNavbar.width(innerWidth);
+	width100.width(innerWidth);
+
 
 	$('body').on('click', '.work_packages .accordion-toggle', function () {
 		if ($(this).next(".accordion-content").is(':visible')) {
 			$(this).next(".accordion-content").slideUp(300);
-			$(this).children().find(".plusminus").text('+');
-			$(this).children(".plusminus").html('<span class="plus"></span>');
+			$(this).children(".plusminus").addClass('plus');
+			$(this).children(".plusminus").removeClass('minus');
 		} else {
 			$(this).next(".accordion-content").slideDown(300);
-			$(this).children().find(".plusminus").text('-');
-			$(this).children(".plusminus").html('<span class="minus"></span>');
+			$(this).children(".plusminus").removeClass('plus');
+			$(this).children(".plusminus").addClass('minus');
 		}
 	});
 });
@@ -68,17 +72,17 @@ function appendSignOut() {
     });
 }
 
-function initAccordeon(pElem) {
-	$('body').on('click', '.accordion-toggle', function () {
-		if ($(this).next(".accordion-content").is(':visible')) {
-			$(this).next(".accordion-content").slideUp(300);
-			$(this).children(".plusminus").html('<span class="plus"></span>');
-		} else {
-			$(this).next(".accordion-content").slideDown(300);
-			$(this).children(".plusminus").html('<span class="minus"></span>');
-		}
-	});
-}
+// function initAccordeon(pElem) {
+// 	$('body').on('click', '.accordion-toggle', function () {
+// 		if ($(this).next(".accordion-content").is(':visible')) {
+// 			$(this).next(".accordion-content").slideUp(300);
+// 			$(this).children(".plusminus").html('<span class="plus"></span>');
+// 		} else {
+// 			$(this).next(".accordion-content").slideDown(300);
+// 			$(this).children(".plusminus").html('<span class="minus"></span>');
+// 		}
+// 	});
+// }
 
 function isBreakpointLarge() {
     return window.innerWidth <= 991;
@@ -120,8 +124,8 @@ function init() {
 
     });
     // appendProfile()
-    appendSignIn()
-    appendSignOut()
+    // appendSignIn()
+    // appendSignOut()
 }
 
 init()

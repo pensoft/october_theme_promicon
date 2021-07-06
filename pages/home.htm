@@ -1,87 +1,97 @@
-title = "SHOWCASing synergies between agriculture, biodiversity and Ecosystem services to help farmers capitalising on native biodiversity"
 url = "/"
 layout = "default"
-meta_description = "homepage desc"
+title = "PROMICON Homepage"
 is_hidden = 0
+meta_description = "homepage desc"
 seo_keywords = "keywords"
 robot_index = "index"
 robot_follow = "follow"
 
 [article_highlights]
-maxItems = 10
-title = "News and Events"
+maxItems = 3
+title = "Latest from the project"
 baseUrl = "/news"
-templates = "template2"
-
-[publications_list]
-baseUrl = "/news"
-templates = "template2"
+templates = "template3"
 
 [jumbotron]
-jumbotron = "homepage"
-title = 0
-background = "#ffffff"
+jumbotron = "harnessing-power-nature"
+title = 1
+background = "transperant"
 
 [Timeline]
-limit = 3
-upcoming = 1
+limit = 4
 ==
-
 <!-- latest from news -->
-{% component 'jumbotron' %}
-<div class="container-fluid banner bg-secondary">
-	{% component 'article_highlights' %}
+<div class="container-fluid homepage-jumbotron-background">
 	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-md-6">{% component 'jumbotron' %}</div>
+			<div class="col-xs-12 col-md-6"></div>
+		</div>		
+	</div>
+
+</div>
+<div class="container-fluid banner bg-secondary bacteria-background">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-md-6">
+				{% component 'article_highlights' %}
+				<p><a href="{{'news'|page}}" class="see_all_news">See all news</a></p>
+			</div>
+			<div class="col-xs-12 col-md-6 hide-in-mobile"><img src="{{'michael-longmire-L9EV3OogLh0-unsplash.jpg'|media|resize(634, 423, {'mode': 'crop'})}}" style="margin-top: 185px; border-radius: 5px;"> </div>
+		</div>
+		<div class="highlighted-news-background"></div>		
+	</div>
+</div>
+<div class="container-fluid banner timeline-bacteria-background">
+	<div class="container">
+		<h2 class="project_timeline">Project timeline</h2>
 		{% component 'Timeline' %}
 	</div>
 </div>
 <div class="container">
-	<div class="row">
-		<div class="col-xs">
-			{% component 'publications_list' %}
-		</div>
-	</div>
+	<h2 class="latest_updates">Follow latest updates</h2>
 	<!-- subscribes -->
 	<div class="row">
 		<div class="col-sm-8 col-xs-12">
 			<div class="twitter-widget">
-			    <a class="twitter-timeline" href="https://twitter.com/SHOWCASE_H2020?ref_src=twsrc%5Etfw">Tweets by SHOWCASE_H2020</a>
+			    <a class="twitter-timeline" href="https://twitter.com/promiconh2020?ref_src=twsrc%5Etfw">Tweets by PROMICON</a>
                 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 			</div>
 		</div>
 		<div class="col-sm-4 col-xs-12">
 
 			<div class="subscribe-container">
+
+				<div class="subscribe-items text-center d-flex row">
+					{% if this.theme.twitter %}
+					<a href="{{this.theme.twitter_url}}" target="_blank" class="col-xs col-md-12 btn p-primary pr p-twitter big"></a>
+					{% endif %}
+					{% if this.theme.facebook %}
+					<a href="{{this.theme.facebook_url}}" target="_blank" class="col-xs col-md-12 btn pr p-primary p-facebook big"></a>
+					{% endif %}
+					{% if this.theme.linkedin %}
+					<a href="{{this.theme.linkedin_url}}" target="_blank" class="col-xs col-md-12 btn pr p-primary p-linkedin big"></a>
+					{% endif %}
+					{% if this.theme.youtube %}
+					<a href="{{this.theme.youtube_url}}" target="_blank" class="col-xs col-md-12 btn pr p-primary p-youtube big"></a>
+					{% endif %}
+					{% if this.theme.instagram %}
+					<a href="{{this.theme.instagram_url}}" target="_blank" class="col-xs col-md-12 btn pr p-primary p-instagram big"></a>
+					{% endif %}
+					{% if this.theme.researchgate %}
+					<a href="{{this.theme.researchgate_url}}" target="_blank" class="col-xs col-md-12 btn pr p-primary p-researchgate big" style="width: 64px;"></a>
+					{% endif %}
+				</div>
 				<div class="subscribe-items d-flex justify-content-evenly flex-column">
-					<a href="/calendar" class="btn btn-primary fluid">Calendar</a>
 
 					{%if this.theme.subscribe%}
-					<a href="{{this.theme.subscribe}}" target="_blank" class="btn btn-primary fluid">Subscribe</a>
+					<a href="{{this.theme.subscribe}}" target="_blank" class="btn btn-primary">Subscribe for our newsletter</a>
 					{%endif%}
 
 					{%if this.theme.feedback%}
-					<a href="mailto:{{this.theme.feedback}}" class="btn btn-primary fluid">Feedback</a>
+					<a href="mailto:{{this.theme.feedback}}" class="btn btn-primary">Feedback</a>
 					{%endif%}
-				</div>
-				<div class="subscribe-items text-center d-flex justify-content-evenly">
-					{% if this.theme.twitter %}
-					<a href="{{this.theme.twitter_url}}" target="_blank" class="btn p-primary pr p-twitter big"></a>
-					{% endif %}
-					{% if this.theme.facebook %}
-					<a href="{{this.theme.facebook_url}}" target="_blank" class="btn pr p-primary p-facebook big"></a>
-					{% endif %}
-					{% if this.theme.linkedin %}
-					<a href="{{this.theme.linkedin_url}}" target="_blank" class="btn pr p-primary p-linkedin big"></a>
-					{% endif %}
-					{% if this.theme.youtube %}
-					<a href="{{this.theme.youtube_url}}" target="_blank" class="btn pr p-primary p-youtube big"></a>
-					{% endif %}
-					{% if this.theme.instagram %}
-					<a href="{{this.theme.instagram_url}}" target="_blank" class="btn pr p-primary p-instagram big"></a>
-					{% endif %}
-					{% if this.theme.researchgate %}
-					<a href="{{this.theme.researchgate_url}}" target="_blank" class="btn pr p-primary p-researchgate big" style="width: 64px;"></a>
-					{% endif %}
 				</div>
 			</div>
 

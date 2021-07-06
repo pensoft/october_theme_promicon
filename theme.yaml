@@ -271,6 +271,7 @@ form:
                     helvetica: Helvetica
                     sofia: Sofia-Pro
                     oswald: Oswald
+                    poppins: Poppins
             background:
                 label: Background color
                 comment: Select a custom color to use as background

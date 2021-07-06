@@ -18,22 +18,20 @@ pageNumber = "{{ :page }}"
 <?php
 use Pensoft\Media\Models\MediaLogos;
 use System\Models\File;
-use Redirect;
 
 function onStart(){
 	$this['mediaLogosList'] =  MediaLogos::get();
-
-	if(post('download')){
-		$file = File::find((int)post('download'));
+	if(get('download')){
+		$file = File::find((int)get('download'));
 		$file_name = $file->getLocalPath();
-		$recordName = post('file_name') ? post('file_name') : 'SHOWCASE_logo';
+		$recordName = get('file_name') ? get('file_name') : 'PROMICON_logo';
 		$ext= $file->getExtension();
 
 if (file_exists($file_name)) {
 header('Content-Description: File Transfer');
 header('Content-Type: application/octet-stream');
 header("Content-Type: application/force-download");
-header('Content-Disposition: attachment; filename='.$recordName .'.'. $ext);
+header('Content-Disposition: atntachment; filename='.$recordName .'.'. $ext);
 header('Content-Transfer-Encoding: binary');
 header('Expires: 0');
 header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
@@ -50,6 +48,8 @@ return Redirect::to('/media-center/logo');
 ?>
 ==
 <div class="container">
+	<a href="/media-center" class="back-to"> &#10094; Back to Media center</a>
+	<h1 class="display-1">PROMICON Logo Pack</h1>
 	{% set records = mediaLogosList %}
 	{% set displayColumn = mediaLogosList.displayColumn %}
 	{% set noRecordsMessage = mediaLogosList.noRecordsMessage %}
@@ -61,24 +61,37 @@ return Redirect::to('/media-center/logo');
 	{# Use spaceless tag to remove spaces inside the A tag. #}
 	{% spaceless %}
 		{% if record.logo_image %}
-			<div class="row">
-				<div class="col-xs-12">
-						<p><img src="{{record.logo_image.path}}" title="{{record.name}}" style="max-width: 350px;"></p>
-				</div>
 
+
+			<div class="row card-container-row">
+				<div class="col-xs-12">
+						<p><img src="{{record.logo_image.path}}" title="{{record.name}}" style="max-width: 250px;"></p>
+				</div>
 				{% if record.file_jpg %}
-					<div class="col-xs-12 col-lg-4">
-						<div class="media-btn_broshure_and_poster"><a class="btn btn-secondary" href="{{ ''| page }}?{{queries}}&download={{record.file_jpg.id}}&file_name={{record.name|replace({' ': '_'})}}">Download .jpg</a></div>
+					<div class="col-xs-3">
+						<div class="card-container">
+							<span class="card_image_container" style="background: url({{'pensoft/file-jpg.svg'|media}}) center center no-repeat; height: 64px; width: 78px; " title="Logo"></span>
+							<span class="card_title">JPG, {{record.file_jpg.size}}</span>
+							<br><a href="{{ ''| page }}?{{queries}}&download={{record.file_jpg.id}}&file_name={{record.name|replace({' ': '_'})}}" title="Logo pack" class="btn btn-primary">Download</a>
+						</div>
 					</div>
 				{% endif %}
 				{% if record.file_png %}
-				<div class="col-xs-12 col-lg-4">
-					<div class="media-btn_broshure_and_poster"><a class="btn btn-secondary" href="{{ ''| page }}?{{queries}}&download={{record.file_png.id}}&file_name={{record.name|replace({' ': '_'})}}">Download .png</a></div>
+				<div class="col-xs-3">
+					<div class="card-container">
+						<span class="card_image_container" style="background: url({{'pensoft/file-png.svg'|media}}) center center no-repeat; height: 64px; width: 78px;" title="Logo"></span>
+						<span class="card_title">PNG, {{record.file_png.size}}</span>
+						<br><a href="{{ ''| page }}?{{queries}}&download={{record.file_png.id}}&file_name={{record.name|replace({' ': '_'})}}" title="Logo pack" class="btn btn-primary">Download</a>
+					</div>
 				</div>
 				{% endif %}
 				{% if record.file_eps %}
-				<div class="col-xs-12 col-lg-4">
-					<div class="media-btn_broshure_and_poster"><a class="btn btn-secondary" href="{{ ''| page }}?{{queries}}&download={{record.file_eps.id}}&file_name={{record.name|replace({' ': '_'})}}">Download .svg</a></div>
+				<div class="col-xs">
+					<div class="card-container">
+						<span class="card_image_container" style="background: url({{'pensoft/file-eps.svg'|media}}) center center no-repeat; height: 64px; width: 78px;" title="Logo"></span>
+						<span class="card_title">EPS, vector, {{record.file_eps.size}}</span>
+						<br><a href="{{ ''| page }}?{{queries}}&download={{record.file_eps.id}}&file_name={{record.name|replace({' ': '_'})}}" title="Logo pack" class="btn btn-primary">Download</a>
+					</div>
 				</div>
 				{% endif %}
 			</div>

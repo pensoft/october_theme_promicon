@@ -1,6 +1,6 @@
-title = "Events"
 url = "/events/:slug?|[a-zA-Z\-0-9]"
 layout = "default"
+title = "Events"
 is_hidden = 0
 robot_index = "index"
 robot_follow = "follow"
@@ -12,7 +12,8 @@ category = "null"
 language = "en"
 ==
 <?php
-use ChristophHeich\Calendar\Models\Entry;
+use Pensoft\Calendar\Models\Entry;
+use Carbon\Carbon;
 
 function onStart(){
 
@@ -43,13 +44,32 @@ function onStart(){
     //$this['slug'] = !(is_numeric($this->param('slug')) || $this->param('slug') == null);
     
     $this['slug'] = $this->param('slug');
+
+	$this['entries'] =  Entry::select('*')->whereMonth('end', Carbon::now()->month)->orderBy('start')->get();
 }
 ?>
 ==
 <div class="container">
-{% if not slug %}
-    {% component 'calendar' %}    
-{% else %}
+	<h1 class="display-1">Events</h1>
+	{% if not slug %}
+	<div class="row">
+		<div class="col-md-8 col-xs-12">
+
+				{% component 'calendar' %}
+		</div>
+		<div class="col-md-4 col-xs-12">
+			{% for entry in entries %}
+				<div class="entry_list_item">
+					{{ entry.start|date("F d, Y") }}<br>
+					<b style="font-size:20px;">{{entry.title}}</b><br>
+					<p>{{ entry.description|length > 200 ? entry.description|striptags|slice(0, 200) ~ '...' : entry.description|raw  }}</p>
+					<p><a href="{{'events'|page}}/{{entry.slug}}" class="btn btn-primary">Learn more</a></p>
+				</div>
+			{% endfor %}
+        </div>
+	</div>
+
+	{% endif %}
 
     {% if entry %}
     <div class="fr-view">
@@ -72,11 +92,9 @@ function onStart(){
         <a class="mt-2 button" href="{{ entry.url }}" target="_blank">{{ 'To the event'|_ }}</a>
         {% endif %}
     </div>
-    
+
     {% else %}
     {% endif %}
-
-{% endif %}
 
 </div>
 <script>

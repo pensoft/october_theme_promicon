@@ -25,9 +25,8 @@ button:not(:disabled) {
     .rounded();
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     .breakpoint-small-down({
-        width: 100%;
-        padding-left: 0;
-        padding-right: 0;
+        width: auto;
+
     });
     word-break: break-all;
     &.no-margin {
@@ -95,22 +94,12 @@ button:not(:disabled) {
     color: @white-color;
     background-color: @button-background-color;
     border-color: @button-background-color;
-    .rounded(50px);
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    .rounded(5px);
+  white-space: nowrap;
 }
 
 .btn-primary:hover {
-    color: @button-background-color;
-    background-color: @white-color;
-    border-color: @button-background-color;
-    .rounded(50px);
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    opacity: 0.7;
 }
 
 .btn-secondary {

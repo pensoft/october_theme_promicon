@@ -17,7 +17,6 @@
   border-top: 0;
   overflow: unset!important;
   height: unset!important;
-  display: block!important;
 }
 
 .ui-accordion .ui-accordion-header {
@@ -52,7 +51,6 @@
 }
 
 .ui-widget {
-  font-family: Muli!important;
   font-size: 1em;
 }
 
@@ -75,7 +73,6 @@
     padding: 20px;
     font-size: 1em;
     cursor: pointer;
-    font-family: Muli;
 }
 
 .accordion-toggle.subfolder_photos, .accordion-toggle.subfolder_files{
@@ -120,33 +117,11 @@
 }
 
 .plusminus{
-  width: 17px;
-  height: 17px;
+  width: 50px;
+  height: 50px;
   position: relative;
   display: inline-block;
 }
-
-.plus{
-  background: url(../../assets/images/expand.svg) left no-repeat;
-  width: 18px;
-  height: 18px;
-  position: relative;
-  display: inline-block;
-  top: 4px;
-  left: 1px;
-}
-.minus{
-  background: url(../../assets/images/colapse.svg) left no-repeat;
-  width: 18px;
-  height: 18px;
-  position: relative;
-  display: inline-block;
-  top: 4px;
-  left: 1px;
-}
-
-/*
-*/
 
 .work_packages{
   list-style-type: none;
@@ -155,15 +130,20 @@
 }
 
 .work_packages .accordion-border{
-  background: #e0e2e0;
   border: none;
-  border-radius: 10px;
-  padding: 25px;
-  margin: 30px 0 50px 0;
+  border-radius: 5px;
+  padding: 20px!important;
+  margin: 20px 0;
   font-size: 1em;
   cursor: pointer;
-  font-family: Muli;
-  color: @default-color;
+  width: 75%;
+  background: @white-color;
+  -moz-box-shadow: 0 0 20px #0000001A;
+  -webkit-box-shadow: 0 0 20px #0000001A;
+  box-shadow: 0 0 20px #0000001A;
+  .breakpoint-small-down({
+    width: 100%;
+  });
 }
 
 .work_packages .accordion-toggle{
@@ -171,13 +151,16 @@
   border: none;
   border-radius: unset;
   padding: 0;
-  font-family: Oswald;
   color: @default-color;
-  font-size: 1.2em;
+  font-size: 1em;
+  font-weight: bold;
 
 }
 .work_packages .accordion-content{
-  margin-top: 50px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #0000001A;
+  line-height: 1.5em!important;
 }
 
 
@@ -189,34 +172,26 @@
 }
 
 .work_packages .plusminus{
-  width: 30px;
+  max-width: 25px;
   height: 29px;
-  text-align: center;
+  text-align: right;
   vertical-align: middle;
-  background: @green-color;
-  color: @white-color;
-  border-radius: 50%;
+  color: @default-color;
   font-size: 1em;
-  line-height: 1.3em;
-  text-align: center;
-  font-family: 'Muli';
-  padding-bottom: 1px;
+  background: url(../../assets/images/Icons/arrow.svg) top left no-repeat;
+  &.plus{
+    background: url(../../assets/images/Icons/arrow.svg) top left no-repeat;
+  }
+  &.minus{
+    background: url(../../assets/images/Icons/arrow.svg) top left no-repeat;
+    -webkit-transform: scaleY(-1);
+    transform: scaleY(-1);
+  }
 }
 
 .work_packages .green_bullet{
-  background: #8ca03c;
-  color: #ffffff;
-  font-family: Oswald;
-  border-radius: 50%;
-  padding: 28px  0 0 0;
-  width: 80px;
-  height: 52px;
-  display: table;
-  justify-content: center;
-  /* font-weight: bold; */
-  font-size: 1.1em;
-  margin: 0 auto;
-  text-align: center;
+  color: @default-color;
+  max-width: 80px;
 }
 
 
