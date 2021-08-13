@@ -26,6 +26,7 @@
         .breakpoint-small-down({
           font-weight: 400;
         });
+
     }
 
     &.fixed {
@@ -40,8 +41,6 @@
     &.scrolled {
         background-color: @navbar-bkg-color !important;
     }
-
-
 
     .navbar-brand {
       display: flex;
@@ -132,6 +131,10 @@
                         padding-left: 0;
                     }
                 }
+
+                &.sign-in a{
+                  color: @purple-color!important;
+                }
             }
         }
     }
@@ -208,6 +211,12 @@ div.search{
 
 #menuToggle{
   display: none;
+}
+
+.profile_name{
+  img{
+    width: auto!important;
+  }
 }
 
 @media (max-width:1200px) {
@@ -311,7 +320,7 @@ div.search{
   }
 
   #menu li.sign-in a{
-    color: @date-text-color!important;
+    color: @purple-color!important;
   }
 
   #menuToggle input:checked ~ ul

@@ -11,14 +11,13 @@ escape = 1
 
 [googleTracker]
 
-[cookieBanner]
-include_css = 1
-update_partial = "gdpr"
-update_selector = "#gdpr-reload"
-cookie_manager_page = "cookies"
+[cookieConsent]
+message = "This website uses cookies to ensure you get the best experience on our website."
+dismiss = "Got it!"
+learnMore = "More info"
+link = "/privacy-policy"
+theme = "light-bottom"
 ==
-{% component 'cookieBanner' %}
-
 <!DOCTYPE html>
 <html>
 
@@ -49,6 +48,7 @@ cookie_manager_page = "cookies"
 </head>
 
 <body>
+    {% component 'cookieConsent' %}
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v8.0" nonce="X0nPVr3s"></script>
     <!-- Header -->
@@ -91,11 +91,7 @@ cookie_manager_page = "cookies"
     {% endif %}
 
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-    
-    
-	<div id="gdpr-reload">
-		{% partial 'gdpr' %}
-	</div>
+
 </body>
 
 </html>

@@ -429,13 +429,21 @@ a:hover .arrow-left{
 }
 
 .card.internal{
-  background-color: @secondary-color;
-  border-radius: 10px;
-  font-family: Poppins;
-  color: @heading-text-color;
-  max-width: 302px;
-  height: 269px;
-  margin: 0 9px 20px 9px!important;
+  border: none;
+  border-radius: 5px;
+  padding: 0 20px !important;
+  margin: 20px!important;
+  font-size: 1em;
+  width: 196px!important;
+  height: auto;
+  background: #ffffff;
+  -moz-box-shadow: 0 0 20px #0000001A;
+  -webkit-box-shadow: 0 0 20px #0000001a;
+  box-shadow: 0 0 20px #0000001a;
+  flex-basis: unset!important;
+  max-width: unset!important;
+  text-align: center;
+
   .breakpoint-small-down({
     max-width: 95vw;
     margin: 20px auto;
@@ -466,9 +474,110 @@ a:hover .arrow-left{
 }
 
 .folder-background{
-  border-radius: 50%!important;
-  background-color: @white-color!important;
-  width: 160px;
-  height: 160px!important;
-  margin: 20px auto;
+  //border-radius: 50%!important;
+  //background-color: @white-color!important;
+  //width: 160px;
+  //height: 160px!important;
+  //margin: 20px auto;
 }
+
+.internal-documents{
+
+  .accordion-toggle{
+    border: none;
+    border-radius: 5px;
+    padding: 20px !important;
+    margin: 0!important;
+    font-size: 1em;
+    cursor: pointer;
+    width: 100%;
+    background: #ffffff;
+    -moz-box-shadow: 0 0 20px #0000001A;
+    -webkit-box-shadow: 0 0 20px #0000001a;
+    box-shadow: 0 0 20px #0000001a;
+  }
+
+  .plusminus{
+    width: 17px;
+    height: 17px;
+    position: relative;
+    display: inline-block;
+  }
+
+  .plus{
+    background: url(../../assets/images/expand.svg) left no-repeat;
+    width: 18px;
+    height: 18px;
+    position: relative;
+    display: inline-block;
+    top: 4px;
+    left: 1px;
+  }
+  .minus{
+    background: url(../../assets/images/colapse.svg) left no-repeat;
+    width: 18px;
+    height: 18px;
+    position: relative;
+    display: inline-block;
+    top: 4px;
+    left: 1px;
+  }
+
+  .accordion-toggle.subfolder_photos, .accordion-toggle.subfolder_files{
+    border: none;
+    background: url('@{slick-loader-path}folder.svg') left no-repeat;
+    background-size: 33px;
+    padding-left: 42px!important;
+    border-radius: unset!important;
+    border: none;
+    border-radius: 5px;
+    padding: 0 0 0 42px !important;
+    margin: 0 0 20px 0!important;
+    font-size: 1em;
+    cursor: pointer;
+    width: 100%;
+    //background: #ffffff;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+  .row .col-xs-12.card.internal{
+    margin-right: 17px!important;
+    &:last-of-type{
+      margin-right: 0!important;
+    }
+  }
+
+  .card.internal .card-header{
+    white-space: unset;
+    text-align: left;
+    font-weight: 600;
+    color: @secondary-color;
+  }
+
+  .folder-background{
+    background-size: 82px!important;
+    height: 120px!important;
+    background-position: 20px!important;
+  }
+
+}
+
+//.plusminus{
+//  max-width: 25px;
+//  height: 29px;
+//  text-align: right;
+//  vertical-align: middle;
+//  color: @default-color;
+//  font-size: 1em;
+//  background: url(../../assets/images/Icons/arrow.svg) top left no-repeat;
+//  &.plus{
+//    background: url(../../assets/images/Icons/arrow.svg) top left no-repeat;
+//  }
+//  &.minus{
+//    background: url(../../assets/images/Icons/arrow.svg) top left no-repeat;
+//    -webkit-transform: scaleY(-1);
+//    transform: scaleY(-1);
+//  }
+//}

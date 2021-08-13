@@ -1,10 +1,11 @@
 .navbar-loggedin-user{
-  background: #e0e2e0;
-  position: fixed;
+  background: @purple-color;
+  position: fixed!important;
   z-index: 999;
   height: 58px;
   width: 100%;
   padding-top: 19px;
+  top:0;
 }
 
 .navbar-loggedin-user ul{
@@ -23,7 +24,7 @@
 }
 
 .navbar-loggedin-user ul li a{
-  color: @heading-text-color;
+  color: @white-color;
   max-width: 150px;
   padding: 10px;
   .breakpoint-small-down({
@@ -39,7 +40,7 @@
 .navbar-loggedin-user li.active a{}
 
 .nav-item.sign-in a{
-  color: @date-text-color!important;
+  color: @purple-color!important;
   padding-top: 0.6rem;
   padding-bottom: 0.6rem;
   display: block;
@@ -49,7 +50,7 @@
   .breakpoint-small-down({
       padding: 0;
       padding-bottom: 5px;
-      color: @date-text-color!important;
+      color: @purple-color!important;
   });
 }
 

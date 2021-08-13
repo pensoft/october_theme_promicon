@@ -35,6 +35,8 @@ $(document).ready(function() {
 			$(this).children(".plusminus").addClass('minus');
 		}
 	});
+
+	$('.nav.nav-pills').removeAttr('id');
 });
 
 
@@ -54,7 +56,7 @@ function appendProfile() {
 }
 function appendSignIn(){
     $(document).on('signin', function (e) {
-        var headerNavbarLogin = $('#headerNavbarLogin');
+        var headerNavbarLogin = $('#headerNavbarNav');
         var li = '<li class="nav-item sign-in"><a href="/login" target = "_self">Login</a></li >';
 		headerNavbarLogin.find('>ul').append(li);
 		var menu = $('#menuToggle');
@@ -64,7 +66,7 @@ function appendSignIn(){
 
 function appendSignOut() {
     $(document).on('signout', function (e) {
-        var headerNavbarNav = $('#headerNavbarLogin');
+        var headerNavbarNav = $('#headerNavbarNav');
         var li = '<li class="nav-item  sign-in"><a data-request="onLogout" data-request-data="redirect: \'/\'">Logout</a></li >';
         headerNavbarNav.find('>ul').append(li);
 		var menu = $('#menuToggle');
@@ -124,8 +126,8 @@ function init() {
 
     });
     // appendProfile()
-    // appendSignIn()
-    // appendSignOut()
+    appendSignIn()
+    appendSignOut()
 }
 
 init()
