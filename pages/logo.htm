@@ -24,14 +24,15 @@ function onStart(){
 	if(get('download')){
 		$file = File::find((int)get('download'));
 		$file_name = $file->getLocalPath();
-		$recordName = get('file_name') ? get('file_name') : 'PROMICON_logo';
+
 		$ext= $file->getExtension();
+		$recordName = get('file_name') ? get('file_name') : 'PROMICON_logo.'.$ext;
 
 if (file_exists($file_name)) {
 header('Content-Description: File Transfer');
 header('Content-Type: application/octet-stream');
 header("Content-Type: application/force-download");
-header('Content-Disposition: atntachment; filename='.$recordName .'.'. $ext);
+header('Content-Disposition: atntachment; filename='.$recordName);
 header('Content-Transfer-Encoding: binary');
 header('Expires: 0');
 header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
@@ -72,7 +73,7 @@ return Redirect::to('/media-center/logo');
 						<div class="card-container">
 							<span class="card_image_container" style="background: url({{'pensoft/file-jpg.svg'|media}}) center center no-repeat; height: 64px; width: 78px; " title="Logo"></span>
 							<span class="card_title">JPG, {{record.file_jpg.size}}</span>
-							<br><a href="{{ ''| page }}?{{queries}}&download={{record.file_jpg.id}}&file_name={{record.name|replace({' ': '_'})}}" title="Logo pack" class="btn btn-primary">Download</a>
+							<br><a href="{{ ''| page }}?{{queries}}&download={{record.file_jpg.id}}&file_name={{record.file_jpg.file_name|replace({' ': '_'})}}" title="Logo pack" class="btn btn-primary">Download</a>
 						</div>
 					</div>
 				{% endif %}
@@ -81,7 +82,7 @@ return Redirect::to('/media-center/logo');
 					<div class="card-container">
 						<span class="card_image_container" style="background: url({{'pensoft/file-png.svg'|media}}) center center no-repeat; height: 64px; width: 78px;" title="Logo"></span>
 						<span class="card_title">PNG, {{record.file_png.size}}</span>
-						<br><a href="{{ ''| page }}?{{queries}}&download={{record.file_png.id}}&file_name={{record.name|replace({' ': '_'})}}" title="Logo pack" class="btn btn-primary">Download</a>
+						<br><a href="{{ ''| page }}?{{queries}}&download={{record.file_png.id}}&file_name={{record.file_png.file_name|replace({' ': '_'})}}" title="Logo pack" class="btn btn-primary">Download</a>
 					</div>
 				</div>
 				{% endif %}
@@ -89,8 +90,8 @@ return Redirect::to('/media-center/logo');
 				<div class="col-xs">
 					<div class="card-container">
 						<span class="card_image_container" style="background: url({{'pensoft/file-eps.svg'|media}}) center center no-repeat; height: 64px; width: 78px;" title="Logo"></span>
-						<span class="card_title">EPS, vector, {{record.file_eps.size}}</span>
-						<br><a href="{{ ''| page }}?{{queries}}&download={{record.file_eps.id}}&file_name={{record.name|replace({' ': '_'})}}" title="Logo pack" class="btn btn-primary">Download</a>
+						<span class="card_title">SVG, vector, {{record.file_eps.size}}</span>
+						<br><a href="{{ ''| page }}?{{queries}}&download={{record.file_eps.id}}&file_name={{record.file_eps.file_name|replace({' ': '_'})}}" title="Logo pack" class="btn btn-primary">Download</a>
 					</div>
 				</div>
 				{% endif %}

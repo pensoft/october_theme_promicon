@@ -49,9 +49,15 @@
       background-size: 500px;
       background-repeat: no-repeat;
       background-position: -105px -135px;
+      .breakpoint-laptop-down({
+        height: 77px;
+        background-size: 200px!important;
+        background-position: 35px 17px;
+      });
       .breakpoint-small-down({
-        background-position: -100px -128px;
+        height: 44px;
         background-size: 480px;
+        background-position: 20px 1px;
       });
     }
 
@@ -200,8 +206,8 @@ div.search{
     width: 100%;
     height: 44px;
     margin-bottom: 20px;
-    margin-left: 10px;
-    margin-right:10px;
+    //margin-left: 10px;
+    //margin-right:10px;
     label{
       display: none;
     }
@@ -228,10 +234,11 @@ div.search{
     flex-direction: column;
     position: relative;
     //top: 25px;
-    //left: -22px;
+    left: -22px;
     z-index: 1;
     -webkit-user-select: none;
     user-select: none;
+    align-items: flex-end;
   }
 
   #menuToggle input
@@ -297,7 +304,8 @@ div.search{
     position: absolute;
     width: 100vw;
     height: calc(100vh - 7px);
-    margin: -22px 0 0 -100vw;
+    //margin: -22px 0 0 -100vw;
+    margin: -22px -22px 0 0;
     padding: 49px 0 0 85px;
     background-color: @default-color;
     color: @white-color!important;
