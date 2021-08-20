@@ -45,7 +45,6 @@ function onStart(){
     
     $this['slug'] = $this->param('slug');
 
-	$this['entries'] =  Entry::select('*')->whereMonth('end', Carbon::now()->month)->orderBy('start')->get();
 }
 ?>
 ==
@@ -53,20 +52,10 @@ function onStart(){
 	<h1 class="display-1">Events</h1>
 	{% if not slug %}
 	<div class="row">
-		<div class="col-md-8 col-xs-12">
-
+		<div class="col-md-12 col-xs-12">
 				{% component 'calendar' %}
 		</div>
-		<div class="col-md-4 col-xs-12">
-			{% for entry in entries %}
-				<div class="entry_list_item">
-					{{ entry.start|date("F d, Y") }}<br>
-					<b style="font-size:20px;">{{entry.title}}</b><br>
-					<p>{{ entry.description|length > 200 ? entry.description|striptags|slice(0, 200) ~ '...' : entry.description|raw  }}</p>
-					<p><a href="{{'events'|page}}/{{entry.slug}}" class="btn btn-primary">Learn more</a></p>
-				</div>
-			{% endfor %}
-        </div>
+
 	</div>
 
 	{% endif %}
