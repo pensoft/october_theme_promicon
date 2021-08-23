@@ -11,7 +11,10 @@ html,body {
 }
 
 .content-wrapper {
-  min-height: calc(100% - 547px);
+  min-height: calc(100vh - 547px);
+  .breakpoint-small-down({
+    min-height: 100%;
+  });
 }
 
 a {
