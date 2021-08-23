@@ -2,17 +2,17 @@
 var documentHasScroll = function() {
     return window.innerHeight <= document.body.offsetHeight;
 };
-var keepFooter = function(documentHasScroll){
-    if (!document.getElementById("layout-footer")){
-        return;
-    }
-
-    if(documentHasScroll){
-        document.getElementById("layout-footer").classList.remove('fixed-bottom');
-    }else{
-        document.getElementById("layout-footer").classList.add('fixed-bottom');
-    }
-}
+// var keepFooter = function(documentHasScroll){
+//     if (!document.getElementById("layout-footer")){
+//         return;
+//     }
+//
+//     if(documentHasScroll){
+//         document.getElementById("layout-footer").classList.remove('fixed-bottom');
+//     }else{
+//         document.getElementById("layout-footer").classList.add('fixed-bottom');
+//     }
+// }
 
 
 
@@ -125,7 +125,7 @@ function init() {
                 });
              }
         }
-        keepFooter(documentHasScroll());
+        // keepFooter(documentHasScroll());
 
     });
     document.addEventListener('DOMContentLoaded', function () {
@@ -141,7 +141,7 @@ function init() {
                 });
             }
         }
-        keepFooter(documentHasScroll());
+        // keepFooter(documentHasScroll());
 
     });
     // appendProfile()
