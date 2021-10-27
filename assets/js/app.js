@@ -39,9 +39,12 @@ $(document).ready(function() {
 	$('.nav.nav-pills').removeAttr('id');
 
 
-	$('.contact_info .card-body .body').each(function(){
-		$(this).find('p').first().append('<div class="dorsal">Read more</div>');
-		$(this).find('p:not(:first)').wrapAll( "<div class='toogle-contact-paragraphs'></div>" )
+	$('.contact_info .card-body .body, .insider-info .card-body .body').each(function(){
+		var countParagraphs = $(this).find('p').length;
+		if(countParagraphs > 1) {
+			$(this).find('p').first().append('<div class="dorsal">Read more</div>');
+			$(this).find('p:not(:first)').wrapAll("<div class='toogle-contact-paragraphs'></div>")
+		}
 	});
 
 	$('.dorsal').click(function () {
