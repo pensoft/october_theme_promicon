@@ -8,11 +8,11 @@ robot_follow = "follow"
 [PartnersPage]
 limit = 0
 templates = "template4"
-
-[profile_records]
-show-category-title = 0
+button_name = "View members"
+related-profiles = 1
+show-category-title = 1
 category = 2
-maxItems = 10
+maxItems = 100
 ==
 <div class="container">
 	<h1 class="display-1">Partners</h1>
@@ -24,16 +24,6 @@ maxItems = 10
 
 {% component 'PartnersPage' %}
 
-<div class="container">
-    <div class="row">
-		<div class="col-xs-12">
-			
-			<div class="contact_info insider">
-				{% component 'profile_records' %}
-			</div>
-		</div>
-    </div>
-</div>
 
 
 </div>
