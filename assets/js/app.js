@@ -72,6 +72,16 @@ $(document).ready(function() {
 });
 
 
+$(document).ajaxComplete(function() {
+	$('.insider-info').after('<div class="row"><div class="col-xs-12"><a href="javascript:void(0);" onclick="scrollPartners();" class="btn btn-primary">Back to partner institutions</a></div></div>');
+});
+
+
+function scrollPartners(){
+	$('html, body').animate({
+		scrollTop: $("#mycomponentpartners").offset().top - 100
+	}, 1000);
+}
 
 function encodeURIObject(data){
     return Object.keys(data).map(function (i) {
