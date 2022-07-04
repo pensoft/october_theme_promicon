@@ -47,6 +47,13 @@ $(document).ready(function() {
 		}
 	});
 
+
+    var newsReadMore = $('.news .content').find('.dorsal');
+    if(newsReadMore.length){
+        newsReadMore.nextAll('p').wrapAll("<div class='toogle-contact-paragraphs'></div>")
+    }
+    
+
 	$('.dorsal').click(function () {
 		var link = $(this);
 		link.parent().parent().find('.toogle-contact-paragraphs').slideToggle('slow', function() {
@@ -137,7 +144,7 @@ function init() {
         if (isBreakpointLarge()) {
             $('#card-carousel').slick('unslick');
         } else {
-            if (typeof cardCarousel === 'function') { 
+            if (typeof cardCarousel === 'function') {
                 cardCarousel({
                     slidesToShow: 3,
                     slidesToScroll: 3,
@@ -153,7 +160,7 @@ function init() {
     });
     document.addEventListener('DOMContentLoaded', function () {
         if (!isBreakpointLarge()) {
-            if (typeof cardCarousel === 'function') { 
+            if (typeof cardCarousel === 'function') {
                 cardCarousel({
                     slidesToShow: 3,
                     slidesToScroll: 3,
