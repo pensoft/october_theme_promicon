@@ -1,12 +1,12 @@
-title = "Logo"
 url = "/media-center/logo"
 layout = "default"
+title = "Logo"
 is_hidden = 0
 robot_index = "index"
 robot_follow = "follow"
 
 [builderList mediaLogosList]
-modelClass = "pensoft\Media\Models\MediaLogos"
+modelClass = "ABWebDevelopers\ImageResize\Models\ImagePermalink"
 scope = "-"
 scopeValue = "{{ :scope }}"
 displayColumn = "name"
@@ -14,6 +14,8 @@ noRecordsMessage = "No records found"
 detailsPage = "-"
 detailsUrlParameter = "id"
 pageNumber = "{{ :page }}"
+sortColumn = "identifier"
+sortDirection = "asc"
 ==
 <?php
 use Pensoft\Media\Models\MediaLogos;
@@ -63,10 +65,12 @@ return Redirect::to('/media-center/logo');
 	{% spaceless %}
 		{% if record.logo_image %}
 
-
+			
 			<div class="row card-container-row mb-4">
 				<div class="col-xs-12">
+						<h2>{{record.name}}</h2>
 						<p><img src="{{record.logo_image.path}}" title="{{record.name}}" style="max-width: 250px;"></p>
+						
 				</div>
 				{% if record.file_jpg %}
 					<div class="col-md-3 col-xs-12">
