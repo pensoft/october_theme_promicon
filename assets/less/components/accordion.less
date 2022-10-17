@@ -183,3 +183,151 @@
 }
 
 
+
+
+.sent-messages-container{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    line-height: 1.3em!important;
+    font-weight: 300!important;
+
+    .messages{
+        border: none;
+        border-radius: 5px;
+        padding: 20px !important;
+        margin: 20px 0;
+        font-size: 1em;
+        cursor: pointer;
+        width: 90%;
+        background: @white-color;
+        -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+
+    .accordion-toggle{
+
+        .title_container{
+            font-size: 24px;
+            color: @dark-color;
+            font-weight: bold;
+            cursor: pointer;
+            .breakpoint-huge-down({
+                height: unset;
+                margin: 20px auto;
+            });
+
+            .date{
+                font-weight: normal;
+                font-size: 18px;
+                color: @green-color;
+            }
+        }
+
+        .website{
+            .breakpoint-small-down({
+                margin: 0px auto;
+            });
+        }
+    }
+
+    h2{
+        font-size: 20px;
+        text-align: left;
+        margin: 20px 0 10px 0;
+    }
+    a{
+        font-weight: bold;
+        color: @link-color;
+        &.email{
+            background: url("../../assets/images/email-colour.svg") left no-repeat;
+            background-size: 27px;
+            padding-left: 36px;
+            margin: 9px 0;
+            display: block;
+            float: left;
+        }
+    }
+
+    .role ul{
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: inline;
+        li{
+            display: inline-block;
+            color: @white-color;
+            padding: 3px 10px;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0 10px 10px 0;
+            .breakpoint-small-down({
+                margin: 10px auto;
+                display: table;
+            });
+        }
+    }
+
+
+    .messages .plusminus{
+        max-width: 25px;
+        height: 29px;
+        text-align: right;
+        vertical-align: middle;
+        color: @default-color;
+        font-size: 1em;
+        background: url(../../assets/images/Icons/arrow.svg) top left no-repeat;
+        &.plus{
+            background: url(../../assets/images/Icons/arrow.svg) top left no-repeat;
+        }
+        &.minus{
+            background: url(../../assets/images/Icons/arrow.svg) top left no-repeat;
+            -webkit-transform: scaleY(-1);
+            transform: scaleY(-1);
+        }
+    }
+
+    .breakpoint-laptop-down({
+        .col-lg-6{
+            padding: 0!important;
+        }
+    });
+
+
+
+    .messages .accordion-border{
+        border: none;
+        padding: 0;
+        margin: 0 0 20px 0;
+        font-size: 1em;
+        cursor: pointer;
+        width: 100%;
+        background: @secondary-color;
+
+    }
+
+    .messages .accordion-toggle{
+        border: none;
+        border-radius: unset;
+        padding: 0;
+        color: @default-color;
+        font-size: 1em;
+        font-weight: bold;
+        width: 100%;
+    }
+
+    .messages .accordion-content{
+        padding: 20px 30px;
+        line-height: 1.5em!important;
+    }
+
+    .messages .accordion-content p{
+        .breakpoint-large-down({
+            padding: 0!important;
+            text-align: left!important;
+        });
+    }
+}
+
+

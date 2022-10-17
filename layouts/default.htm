@@ -24,7 +24,7 @@ theme = "light-bottom"
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% component 'SeoCmsPage' %} 
+    {% component 'SeoCmsPage' %}
     {% if this.theme.site_icon %}
     <link rel="icon" type="{{this.theme.site_icon.getContentType()}}" href="{{this.theme.site_icon.getPath()}}">
     {% endif %}
@@ -33,6 +33,8 @@ theme = "light-bottom"
     <link href="{{ ['assets/css/scale.css']|theme }}" rel="stylesheet">
     <link href="{{ ['assets/css/light.css']|theme }}" rel="stylesheet">
     <script src="{{ 'assets/js/jquery.js'|theme }}"></script>
+    <script src="{{ 'assets/js/popper.min.js'|theme }}"></script>
+    <script src="{{ 'assets/js/tippy-bundle.umd.min.js'|theme}}"></script>
     <script src="{{ 'assets/js/app.js'|theme }}"></script>
     <script src="{{ 'assets/js/jquery-ui.js'|theme }}"></script>
     <script src="{{ 'assets/vendor/bootstrap/js/modal.js'|theme  }}"></script>
@@ -80,8 +82,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     {% if this.theme.enable_footer %}
     <!-- Footer -->
     <footer id="layout-footer">
-        {% partial 'site/footer' 
-            enable_social_media=this.theme.social_media 
+        {% partial 'site/footer'
+            enable_social_media=this.theme.social_media
             enable_facebook=this.theme.facebook
             facebook_url=this.theme.facebook_url
 			enable_instagram=this.theme.instagram
