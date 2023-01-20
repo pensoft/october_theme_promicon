@@ -12,6 +12,7 @@ use Pensoft\Media\Models\Newsletters;
 use Pensoft\Media\Models\Presentations;
 use Pensoft\Media\Models\Pressreleases;
 use Pensoft\Media\Models\Videos;
+use Pensoft\Media\Models\Graphic;
 
 function onStart(){
 	$this['logos'] =  MediaLogos::get();
@@ -20,6 +21,7 @@ function onStart(){
 	$this['presentations'] =  Presentations::get();
 	$this['pressreleases'] =  Pressreleases::get();
 	$this['videos'] =  Videos::get();
+	$this['graphics'] =  Graphic::get();
 }
 ?>
 ==
@@ -35,6 +37,15 @@ function onStart(){
 			</div>
 		</div>
 		{% endif %}
+        {% if graphics.count() %}
+        <div class="col-xs">
+            <div class="card-container">
+                <span class="card_image_container" style="background: url({{'pensoft/logo-pack.svg'|media}}) center center no-repeat;height: 64px; width: 78px;" href="{{url('media-center')}}/stickers" title="Stickers"></span>
+                <span class="card_title">Stickers</span>
+                <br><a href="{{url('media-center')}}/stickers" title="Stickers" class="btn btn-primary">Browse files</a>
+            </div>
+        </div>
+        {% endif %}
 		{% if flyers.count() %}
 		<div class="col-xs">
 			<div class="card-container">
