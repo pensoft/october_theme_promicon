@@ -66,10 +66,10 @@ return Redirect::to('/media-center/stickers');
 	{% spaceless %}
 		{% if record.image %}
 
-        <div class="col-md-3 col-xs-12">
+        <div class="col-md-4 col-xs-12">
             <div class="row card-container-row mb-4">
                 <div class="col-xs-12">
-                    <h2>{{record.name}}</h2>
+                    <h2 style="min-height: 85px;">{{record.name}}</h2>
                     <p style="height: 150px;"><img src="{{record.image.path}}" title="{{record.name}}" style="max-width: 250px;"></p>
 
                 </div>

@@ -1,6 +1,6 @@
-title = "Media center"
 url = "/media-center"
 layout = "default"
+title = "Media center"
 is_hidden = 0
 robot_index = "index"
 robot_follow = "follow"
@@ -29,7 +29,7 @@ function onStart(){
 	<h1 class="display-1">Media center</h1>
     <div class="row start-sm">
 		{% if logos.count() %}
-        <div class="col-xs">
+        <div class="col-md-3 col-xs-12">
 			<div class="card-container">
 				<span class="card_image_container" style="background: url({{'pensoft/logo-pack.svg'|media}}) center center no-repeat;height: 64px; width: 78px;" href="{{url('media-center')}}/logo" title="Logo"></span>
 				<span class="card_title">Logo pack</span>
@@ -38,16 +38,16 @@ function onStart(){
 		</div>
 		{% endif %}
         {% if graphics.count() %}
-        <div class="col-xs">
+        <div class="col-md-3 col-xs-12">
             <div class="card-container">
-                <span class="card_image_container" style="background: url({{'pensoft/logo-pack.svg'|media}}) center center no-repeat;height: 64px; width: 78px;" href="{{url('media-center')}}/stickers" title="Stickers"></span>
+                <span class="card_image_container" style="background: url({{'pensoft/sticker.svg'|media}}) center center no-repeat; background-size: 46px; height: 64px; width: 78px;" href="{{url('media-center')}}/stickers" title="Stickers"></span>
                 <span class="card_title">Stickers</span>
                 <br><a href="{{url('media-center')}}/stickers" title="Stickers" class="btn btn-primary">Browse files</a>
             </div>
         </div>
         {% endif %}
 		{% if flyers.count() %}
-		<div class="col-xs">
+		<div class="col-md-3 col-xs-12">
 			<div class="card-container">
 				<span class="card_image_container" style="background: url({{'pensoft/brochure.svg'|media}}) center center no-repeat;height: 64px; width: 78px;" href="{{url('media-center')}}/logo" title="Logo"></span>
 				<span class="card_title">Brochure and poster</span>
@@ -56,7 +56,7 @@ function onStart(){
 		</div>
 		{% endif %}
 		{% if newsletters.count() %}
-		<div class="col-xs">
+		<div class="col-md-3 col-xs-12">
 			<div class="card-container">
 				<span class="card_image_container" style="background: url({{'pensoft/newsletter.svg'|media}}) center center no-repeat;height: 64px; width: 78px;" href="{{url('media-center')}}/logo" title="Logo"></span>
 				<span class="card_title">Newsletters</span>
@@ -66,7 +66,7 @@ function onStart(){
 		{% endif %}
 
 		{% if presentations.count() %}
-		<div class="col-xs">
+		<div class="col-md-3 col-xs-12">
 			<div class="card-container">
 				<span class="card_image_container" style="background: url({{'pensoft/newsletter.svg'|media}}) center center no-repeat;height: 64px; width: 78px;" href="{{url('media-center')}}/logo" title="Logo"></span>
 				<span class="card_title">Presentations</span>
@@ -75,7 +75,7 @@ function onStart(){
 		</div>
 		{% endif %}
 		{% if pressreleases.count() %}
-		<div class="col-xs">
+		<div class="col-md-3 col-xs-12">
 			<div class="card-container">
 				<span class="card_image_container" style="background: url({{'pensoft/press-release.svg'|media}}) center center no-repeat;height: 64px; width: 78px;" href="{{url('media-center')}}/logo" title="Logo"></span>
 				<span class="card_title">Press releases</span>
@@ -84,7 +84,7 @@ function onStart(){
 		</div>
 		{% endif %}
 		{% if videos.count() %}
-		<div class="col-xs">
+		<div class="col-md-3 col-xs-12">
 			<div class="card-container">
 				<span class="card_image_container" style="background: url({{'pensoft/video.svg'|media}}) center center no-repeat; height: 64px; width: 78px;" href="{{url('media-center')}}/logo" title="Logo"></span>
 				<span class="card_title">Videos</span>

@@ -23,6 +23,8 @@ $(document).ready(function() {
 	headerNavbar.width(innerWidth);
 	width100.width(innerWidth);
 
+    
+
 
 	$('body').on('click', '.work_packages .accordion-toggle, .messages .accordion-toggle', function () {
 		if ($(this).next(".accordion-content").is(':visible')) {
