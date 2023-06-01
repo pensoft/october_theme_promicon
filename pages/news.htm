@@ -80,6 +80,9 @@ function onStart()
 					{% if article.cover %}
 					<img class="content right-align" src="{{ article.cover|crop_image|resize(500, false, { mode: 'crop' }) }}" />
 					{% endif %}
+					{% if article.caption %}
+                {{article.caption|raw}}
+                {% endif %}
 				</div>
 
 			</div>
