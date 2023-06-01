@@ -23,7 +23,7 @@ $(document).ready(function() {
 	headerNavbar.width(innerWidth);
 	width100.width(innerWidth);
 
-    
+
 
 
 	$('body').on('click', '.work_packages .accordion-toggle, .messages .accordion-toggle', function () {
@@ -67,6 +67,93 @@ $(document).ready(function() {
 		});
 
 	});
+
+    $('.tabs').each(function(){
+        // For each set of tabs, we want to keep track of
+        // which tab is active and its associated content
+        var $active, $content, $links = $(this).find('a');
+        var speed = "fast";
+        var activeTab = $(location.hash);
+        // If the location.hash matches one of the links, use that as the active tab.
+        // If no match is found, use the first link as the initial active tab.
+        $active = $($links.filter("[href=\'"+location.hash+"\']")[0] || $links[0]);
+
+        if($(this).parent().parent().hasClass('events')){
+            $active.addClass('active');
+        }
+
+
+        $content = $($active[0].hash);
+
+        // Hide the remaining content
+        $links.not($active).each(function () {
+            $(this.hash).hide();
+        });
+
+        if(activeTab.length){
+            $content.slideDown(speed);
+            //scroll to element
+            $('html, body').animate({
+                scrollTop:  activeTab.offset().top - $('header').height()
+            }, speed);
+        }
+
+        // Bind the click event handler
+        $(this).find("a").click(function (e) {
+            if($(this).hasClass('active')) {
+                $content.slideDown({
+                    scrollTop: $content.offset().top - $('header').height()
+                }, speed);
+                var screenSize = getScreenSize();
+                if (screenSize.width < 800) {
+                    // scroll to element
+                    $('html, body').animate({
+                        scrollTop: $content.offset().top - $('header').height() + 300  // mobile
+                    }, speed);
+                }else{
+                    //scroll to element icons top
+                    $('html, body').animate({
+                        scrollTop:  $content.offset().top - $('header').height() + 300
+                    }, speed);
+                }
+                e.preventDefault();
+                return false;
+            }
+            // Make the old tab inactive.
+            $active.removeClass('active');
+            // $content.slideUp({
+            // 	scrollTop: $content.offset().top - $('header').height() - $('.left_sidebar').height()
+            // }, speed);
+            $content.hide();
+
+            // Update the variables with the new link and content
+            $active = $(this);
+            $content = $(this.hash);
+
+            location.hash = $active[0].hash;
+
+            // Make the tab active.
+            $active.addClass('active');
+            $content.slideDown({
+                scrollTop: $content.offset().top - $('header').height()
+            }, speed);
+            // var screenSize = getScreenSize();
+            // if (screenSize.width < 800) {
+            // 	// scroll to element
+            // 	$('html, body').animate({
+            // 		scrollTop: $content.offset().top - $('header').height() + 300 // mobile
+            // 	}, speed);
+            // }else{
+            // 	//scroll to element icons top
+            // 	$('html, body').animate({
+            // 		scrollTop:  $content.offset().top - $('header').height() + 300
+            // 	}, speed);
+            // }
+
+            // Prevent the anchor\'s default click action
+            e.preventDefault();
+        });
+    });
 
 	$('<div class="col-xs-12 col-sm-3 card internal no-border" style="margin-bottom: 15px">\n' +
 		'<a class="folder-background" style="display:flex; background: url(https://promicon.eu/storage/app/media/pensoft/living-documents.svg) center center no-repeat; background-size: 100px; height: 200px" href="/internal-repository/living-documents" title="Living documents"></a>\n' +
@@ -139,6 +226,287 @@ function appendSignOut() {
 
 function isBreakpointLarge() {
     return window.innerWidth <= 991;
+}
+
+function handleCustomSVGMapMouseMove(event) {
+    var countryCode = $(event.target).attr('country_code');
+    if (!countryCode) {
+        console.log($(event.target).parents('.fill_GB').length);
+    }
+    var tooltip = document.getElementById("tooltip");
+
+    if (!countryCode) {
+        countryCode = $(event.target).parent().attr('country_code');
+    }
+
+
+
+
+
+    switch (countryCode) {
+        case "AF":
+        case "AX":
+        case "AL":
+        case "DZ":
+        case "AS":
+        case "AD":
+        case "AD":
+        case "AO":
+        case "AI":
+        case "AQ":
+        case "AG":
+        case "AR":
+        case "AM":
+        case "AW":
+        case "AT":
+        case "AZ":
+        case "BS":
+        case "BH":
+        case "BD":
+        case "BB":
+        case "BY":
+        case "BE":
+        case "BZ":
+        case "BJ":
+        case "BM":
+        case "BT":
+        case "BO":
+        case "BQ":
+        case "BA":
+        case "BW":
+        case "BV":
+        case "BR":
+        case "IO":
+        case "BN":
+        case "BG":
+        case "BF":
+        case "BI":
+        case "KH":
+        case "CM":
+        case "CV":
+        case "KY":
+        case "CF":
+        case "TD":
+        case "CL":
+        case "CN":
+        case "CX":
+        case "CC":
+        case "CO":
+        case "KM":
+        case "CG":
+        case "CD":
+        case "CK":
+        case "CR":
+        case "CI":
+        case "HR":
+        case "CU":
+        case "CW":
+        case "CY":
+        case "CZ":
+        case "DK":
+        case "DJ":
+        case "DM":
+        case "DO":
+        case "EC":
+        case "EG":
+        case "SV":
+        case "GQ":
+        case "ER":
+        case "EE":
+        case "ET":
+        case "FK":
+        case "FO":
+        case "FI":
+        case "FJ":
+        case "GF":
+        case "PF":
+        case "TF":
+        case "GA":
+        case "GM":
+        case "GE":
+        case "GH":
+        case "GI":
+        case "GR":
+        case "GL":
+        case "GD":
+        case "GP":
+        case "GU":
+        case "GT":
+        case "GG":
+        case "GN":
+        case "GW":
+        case "GY":
+        case "HT":
+        case "HM":
+        case "VA":
+        case "HN":
+        case "HK":
+        case "IS":
+        case "ID":
+        case "IR":
+        case "IQ":
+        case "IM":
+        case "IL":
+        case "IT":
+        case "JM":
+        case "JP":
+        case "JE":
+        case "JO":
+        case "KZ":
+        case "KE":
+        case "KI":
+        case "KP":
+        case "KR":
+        case "KW":
+        case "KG":
+        case "LA":
+        case "LV":
+        case "LB":
+        case "LS":
+        case "LR":
+        case "LY":
+        case "LI":
+        case "LT":
+        case "LU":
+        case "MO":
+        case "MK":
+        case "MG":
+        case "MW":
+        case "MY":
+        case "MV":
+        case "ML":
+        case "MT":
+        case "MH":
+        case "MQ":
+        case "MR":
+        case "MU":
+        case "YT":
+        case "MX":
+        case "FM":
+        case "MD":
+        case "MC":
+        case "MN":
+        case "ME":
+        case "MS":
+        case "MA":
+        case "MZ":
+        case "MM":
+        case "NA":
+        case "NR":
+        case "NP":
+        case "NC":
+        case "FR":
+        case "IN":
+        case "NL":
+        case "HU":
+        case "IE":
+        case "CA":
+        case "NZ":
+        case "DE":
+        case "NI":
+        case "NE":
+        case "NG":
+        case "NU":
+        case "NF":
+        case "MP":
+        case "NO":
+        case "OM":
+        case "PK":
+        case "PW":
+        case "PS":
+        case "PA":
+        case "PG":
+        case "PY":
+        case "PE":
+        case "PH":
+        case "PN":
+        case "PT":
+        case "PR":
+        case "QA":
+        case "RE":
+        case "RU":
+        case "RW":
+        case "BL":
+        case "SH":
+        case "KN":
+        case "LC":
+        case "MF":
+        case "PM":
+        case "VC":
+        case "WS":
+        case "SM":
+        case "ST":
+        case "SA":
+        case "SN":
+        case "RS":
+        case "SC":
+        case "SL":
+        case "SG":
+        case "SX":
+        case "SK":
+        case "SI":
+        case "SB":
+        case "SO":
+        case "ZA":
+        case "GS":
+        case "LK":
+        case "SD":
+        case "SR":
+        case "SJ":
+        case "SZ":
+        case "SE":
+        case "SY":
+        case "TW":
+        case "TJ":
+        case "TZ":
+        case "TH":
+        case "TL":
+        case "TG":
+        case "TK":
+        case "TO":
+        case "TT":
+        case "TN":
+        case "TR":
+        case "TM":
+        case "TC":
+        case "TV":
+        case "UG":
+        case "UA":
+        case "AE":
+        case "UM":
+        case "UY":
+        case "UZ":
+        case "VU":
+        case "VE":
+        case "VN":
+        case "VG":
+        case "VI":
+        case "WF":
+        case "EH":
+        case "YE":
+        case "ZM":
+        case "ZW":
+        case "US":
+        case "GB":
+        case "ES":
+        case "AU":
+        case "RO":
+        case "CH":
+        case "PL":
+            break;
+        default:
+            return tooltip.classList.remove("active");
+    }
+
+    var x = event.clientX;
+    var y = event.clientY;
+
+    tooltip.style.left = (x + 20) + "px";
+    tooltip.style.top = (y - 20) + "px";
+
+    tooltip.innerHTML = $(event.target).attr('title');
+    tooltip.classList.add("active");
+
 }
 
 function init() {
