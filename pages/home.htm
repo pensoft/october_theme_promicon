@@ -27,13 +27,22 @@ limit = 4
 upcoming = 0
 templates = "template1"
 ==
+<?php
+use Pensoft\Media\Models\Presentations;
+use System\Models\File;
+
+function onStart(){
+	$this['policy_brief'] =  Presentations::orderBy('id', 'desc')->first();
+}
+?>
+==
 <!-- latest from news -->
 <div class="container-fluid homepage-jumbotron-background">
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12 col-md-6">{% component 'jumbotron' %}</div>
 			<div class="col-xs-12 col-md-6"></div>
-		</div>		
+		</div>
 	</div>
 
 </div>
@@ -50,12 +59,12 @@ templates = "template1"
                     <div class="policy_corner_text">
                         Embark on a transformative journey into the realm of natural bacteria and microbiomes, where science shapes the path into informed decision-making and sustainable solutions.
                     </div>
-                    <img src="{{'coming soon-01.svg'|media}}">
+                    <img src="{{policy_brief.presentation_image.path}}">
                     <a href="{{'policy-briefs'|page}}" class="see_all_news">See policy briefs</a>
                 </div>
             </div>
 		</div>
-		<div class="highlighted-news-background"></div>		
+		<div class="highlighted-news-background"></div>
 	</div>
 </div>
 <div class="container-fluid banner timeline-bacteria-background">
