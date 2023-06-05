@@ -25,6 +25,7 @@ description_limit = 0
 [Timeline]
 limit = 4
 upcoming = 0
+templates = "template1"
 ==
 <!-- latest from news -->
 <div class="container-fluid homepage-jumbotron-background">
@@ -38,12 +39,21 @@ upcoming = 0
 </div>
 <div class="container-fluid banner bg-secondary bacteria-background">
 	<div class="container">
-		<div class="row">
+		<div class="row  between-md around-xs">
 			<div class="col-xs-12 col-md-6">
 				{% component 'article_highlights' %}
 				<p><a href="{{'news'|page}}" class="see_all_news">See all news</a></p>
 			</div>
-			<div class="col-xs-12 col-md-6 hide-in-mobile"><img src="{{'michael-longmire-L9EV3OogLh0-unsplash.jpg'|media|resize(634, 423, {'mode': 'crop'})}}" style="margin-top: 185px; border-radius: 5px;"> </div>
+			<div class="col-xs-12 col-md-5">
+                <div class="policy_corner_coming_soon">
+                    <h3>Policy corner</h3>
+                    <div class="policy_corner_text">
+                        Embark on a transformative journey into the realm of natural bacteria and microbiomes, where science shapes the path into informed decision-making and sustainable solutions.
+                    </div>
+                    <img src="{{'coming soon-01.svg'|media}}">
+                    <a href="{{'policy-briefs'|page}}" class="see_all_news">See policy briefs</a>
+                </div>
+            </div>
 		</div>
 		<div class="highlighted-news-background"></div>		
 	</div>

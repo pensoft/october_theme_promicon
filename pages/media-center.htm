@@ -65,15 +65,7 @@ function onStart(){
 		</div>
 		{% endif %}
 
-		{% if presentations.count() %}
-		<div class="col-md-3 col-xs-12">
-			<div class="card-container">
-				<span class="card_image_container" style="background: url({{'pensoft/newsletter.svg'|media}}) center center no-repeat;height: 64px; width: 78px;" href="{{url('media-center')}}/logo" title="Logo"></span>
-				<span class="card_title">Presentations</span>
-				<br><a href="{{url('media-center')}}/presentation" title="Presentations" class="btn btn-primary">Browse files</a>
-			</div>
-		</div>
-		{% endif %}
+		
 		{% if pressreleases.count() %}
 		<div class="col-md-3 col-xs-12">
 			<div class="card-container">
@@ -89,6 +81,16 @@ function onStart(){
 				<span class="card_image_container" style="background: url({{'pensoft/video.svg'|media}}) center center no-repeat; height: 64px; width: 78px;" href="{{url('media-center')}}/logo" title="Logo"></span>
 				<span class="card_title">Videos</span>
 				<br><a href="{{url('media-center')}}/videos" title="Videos" class="btn btn-primary">Browse files</a>
+			</div>
+		</div>
+		{% endif %}
+
+		{% if presentations.count() %}
+		<div class="col-md-3 col-xs-12">
+			<div class="card-container">
+				<span class="card_image_container" style="background: url({{'pensoft/newsletter.svg'|media}}) center center no-repeat;height: 64px; width: 78px;" href="{{url('media-center')}}/policy-briefs" title="Policy briefs"></span>
+				<span class="card_title">Policy briefs</span>
+				<br><a href="{{url('media-center')}}/policy-briefs" title="Policy briefs" class="btn btn-primary">Browse files</a>
 			</div>
 		</div>
 		{% endif %}

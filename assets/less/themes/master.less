@@ -503,6 +503,7 @@ h2{
     color: @white-color;
     border-radius: 20px;
 
+
     h3{
         color: @white-color;
         font-size: 35px;
@@ -510,7 +511,7 @@ h2{
     }
 
     img{
-        width: 70%;
+        width: 70%!important;
         object-fit: cover;
         margin: 50px auto;
         display: flex;
@@ -519,5 +520,24 @@ h2{
 
     .see_all_news{
         margin: 50px auto 0 auto!important;
+    }
+}
+
+
+.policy-briefs{
+    .card-img, .card-img-top {
+        .rounded-tr(10px);
+        .rounded-tl(10px);
+        .rounded-br(10px);
+        .rounded-bl(10px);
+    }
+
+    img.card-img-top{
+        width: 100%!important;
+        height: auto;
+        object-fit: cover;
+        margin: 50px auto;
+        display: flex;
+        justify-self: center;
     }
 }
