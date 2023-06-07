@@ -50,32 +50,50 @@ return Redirect::to('/media-center/flyer');
 ==
 <div class="container">
     <a href="/media-center" class="back-to"> &#10094; Back to Media center</a>
-    <h1 class="display-1">Policy briefs</h1>
+
     <div class="row">
-        {% set records = mediaPresentationsList %}
-        {% set displayColumn = mediaPresentationsList.displayColumn %}
-        {% set noRecordsMessage = mediaPresentationsList.noRecordsMessage %}
-        {% set detailsPage = mediaPresentationsList.detailsPage %}
-        {% set detailsKeyColumn = mediaPresentationsList.detailsKeyColumn %}
-        {% set detailsUrlParameter = mediaPresentationsList.detailsUrlParameter %}
+        <div class="col-xs-12">
+            <h1 class="display-1">Policy briefs</h1>
+            <div class="contact_info">
+                <div class="card-container">
+                    <div class="cards justify-content-between card-profiles ">
 
-        {% for record in records %}
-        {# Use spaceless tag to remove spaces inside the A tag. #}
-        {% spaceless %}
+                        {% set records = mediaPresentationsList %}
+                        {% set displayColumn = mediaPresentationsList.displayColumn %}
+                        {% set noRecordsMessage = mediaPresentationsList.noRecordsMessage %}
+                        {% set detailsPage = mediaPresentationsList.detailsPage %}
+                        {% set detailsKeyColumn = mediaPresentationsList.detailsKeyColumn %}
+                        {% set detailsUrlParameter = mediaPresentationsList.detailsUrlParameter %}
+
+                        {% for record in records %}
+                        {# Use spaceless tag to remove spaces inside the A tag. #}
+                        {% spaceless %}
 
 
-        <div class="card profile card-profile">
-            <p><strong>{{record.name}}</strong></p>
-            <a href="{{ record.file.path }}#file_name={{record.file.file_name}}" rel="noopener noreferrer" target="_blank">
-                <img class="card-img-top fr-fic fr-dii" src="{{record.presentation_image.path}}" alt="{{record.name}}" data-result="success"></a>
-            <p align="center"><a class="btn btn-primary" href="{{ record.file.path }}#file_name={{record.file.file_name}}" target="_blank">Download</a></p>
+                        <div class="card profile card-profile">
+                            <h3 class="card-header">{{record.name}}</h3>
+                            <img class="card-img-top" src="{{record.presentation_image.path}}" alt="{{record.name}}">
+
+                            <p align="center"><a class="btn btn-primary" href="{{ record.file.path }}#file_name={{record.file.file_name}}" target="_blank">Download</a></p>
+                        </div>
+
+                        {% endspaceless %}
+                        {% else %}
+                        {{ noRecordsMessage }}
+                        {% endfor %}
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="row suggestions_questions">
+                <div class="col-md-5 col-xs-12">
+                    <a href="{{'your-suggestions-target-policy'|page}}" class="suggestions">Your suggestions for a target policy</a>
+                </div>
+                <div class="col-md-5 col-xs-12">
+                    <a href="{{'questions-and-feedback'|page}}" class="questions">Questions and Feedback</a>
+                </div>
+            </div>
         </div>
-
-
-
-        {% endspaceless %}
-        {% else %}
-        {{ noRecordsMessage }}
-        {% endfor %}
     </div>
 </div>

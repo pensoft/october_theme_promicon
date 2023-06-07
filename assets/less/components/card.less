@@ -5,65 +5,65 @@
     flex-flow: row wrap;
 }
 .media-center, .logo, .flyer, .newsletters{
-  .card-container {
-    border: none;
-    border-radius: 5px;
-    padding: 20px!important;
-    margin: 20px 0!important;
-    font-size: 1em;
-    width: 243px;
-    height: auto;
-    background: @white-color;
-    -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    .breakpoint-small-down({
-      margin: 20px auto!important;
-    });
-  }
+    .card-container {
+        border: none;
+        border-radius: 5px;
+        padding: 20px!important;
+        margin: 20px 0!important;
+        font-size: 1em;
+        width: 243px;
+        height: auto;
+        background: @white-color;
+        -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        .breakpoint-small-down({
+            margin: 20px auto!important;
+        });
+    }
 }
 
 .videos, .press-releases{
-  .card-container {
-    border: none;
-    border-radius: 5px;
-    padding: 20px!important;
-    margin: 20px 0!important;
-    font-size: 1em;
-    width: 570px;
-    height: fit-content;
-    background: @white-color;
-    -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    .breakpoint-small-down({
-      width: auto;
-    });
-  }
+    .card-container {
+        border: none;
+        border-radius: 5px;
+        padding: 20px!important;
+        margin: 20px 0!important;
+        font-size: 1em;
+        width: 570px;
+        height: fit-content;
+        background: @white-color;
+        -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        .breakpoint-small-down({
+            width: auto;
+        });
+    }
 }
 
 
 .card-container-row{
 
 
-  display: flex!important;
-  flex-direction: row!important;
-  justify-content: flex-start!important;
+    display: flex!important;
+    flex-direction: row!important;
+    justify-content: flex-start!important;
 }
 
 .card_title{
-  font-size: 20px;
-  font-weight: 600;
-  height: 37px;
-  display: block;
+    font-size: 20px;
+    font-weight: 600;
+    height: 37px;
+    display: block;
 }
 
 
 .card_image_container{
-  display: block;
-  width: 100%;
-  height: 243px;
-  margin-bottom: 5px;
+    display: block;
+    width: 100%;
+    height: 243px;
+    margin-bottom: 5px;
 }
 
 
@@ -117,30 +117,30 @@
     display: flex;
     -ms-flex-flow: row wrap;
     flex-flow: row wrap;
-    
+
 
     margin-left: -.5rem;
     margin-right: -.5rem;
-    
+
     .card {
         padding-left: 0.5rem;
         padding-right: 0.5rem;
     }
-    
+
     .breakpoint-small-down({
         .card {
-           width: 100%;
+            width: 100%;
         }
     });
     .breakpoint-small-down({
-      margin-right: 0;
-      margin-left: 0;
+        margin-right: 0;
+        margin-left: 0;
     });
 
-  .text-published{
-    font-size: 20px!important;
-    font-weight: 600;
-  }
+    .text-published{
+        font-size: 20px!important;
+        font-weight: 600;
+    }
 }
 
 .card {
@@ -163,9 +163,9 @@
             max-width: 270px;
         }
         .breakpoint-large-down({
-          display: block;
-          background: #fff;
-          padding: 30px;
+            display: block;
+            background: #fff;
+            padding: 30px;
         });
     }
     &.no-margin-top {
@@ -174,10 +174,10 @@
     &.no-background {
         background-color: @transparent;
         .card-body {
-          background: none;
-          min-height: unset;
-          text-align: center;
-          color: @green-color!important;
+            background: none;
+            min-height: unset;
+            text-align: center;
+            color: @green-color!important;
         }
     }
     &.no-border {
@@ -202,7 +202,7 @@
         .rounded-br(50%);
         .rounded-bl(50%);
     }
-    
+
     .card-header + .card-img, .card-header + .card-img-top {
         .rounded-tl(0);
         .rounded-tr(0);
@@ -239,11 +239,11 @@
     }
 
     a{
-      .rounded(10px);
+        .rounded(10px);
     }
 
     a .card-body{
-      color: @primary-color!important;
+        color: @primary-color!important;
     }
 
     .card-title {
@@ -253,9 +253,9 @@
     }
 
     &.profile {
-      width: 100%;
-      background: none;
-        
+        width: 100%;
+        background: none;
+
         .breakpoint-small-down({
             width: 100%;
             margin-right:0;
@@ -272,20 +272,19 @@
 
             border-bottom: 0px;
             text-align: center;
-            white-space: nowrap;
             font-size: 1em;
 
             a{
-              padding: 10px 20px;
-              background-color: @button-background-color;
-              border-radius: 50px;
-              color: @white-color;
-              display: block;
+                padding: 10px 20px;
+                background-color: @button-background-color;
+                border-radius: 50px;
+                color: @white-color;
+                display: block;
             }
 
             a:hover{
-              background-color: @secondary-color;
-              color: @button-background-color!important;
+                background-color: @secondary-color;
+                color: @button-background-color!important;
             }
         }
 
@@ -294,75 +293,75 @@
         }
 
         .btn-secondary{
-          border: none;
+            border: none;
         }
     }
 
-  &.contacts {
-    border: none;
-    background: none;
-    margin-bottom: 1rem;
-    font-size: 16px;
-    font-weight: normal;
+    &.contacts {
+        border: none;
+        background: none;
+        margin-bottom: 1rem;
+        font-size: 16px;
+        font-weight: normal;
 
-    .card-title, .card-title a{
-      color: #132f58!important;
-      font-weight: bold;
-      margin-top: 10px;
-    }
+        .card-title, .card-title a{
+            color: #132f58!important;
+            font-weight: bold;
+            margin-top: 10px;
+        }
 
-    .card-body {
-      background: @secondary-color;
-      font-weight: normal;
-    }
+        .card-body {
+            background: @secondary-color;
+            font-weight: normal;
+        }
 
-    .card-body a{
-      color: @link-color;
-    }
+        .card-body a{
+            color: @link-color;
+        }
 
-    .card-img-top{
-      width: 100%;
-    }
+        .card-img-top{
+            width: 100%;
+        }
 
-    .p-CH{
-      background: url('../../assets/images/switzerland.svg') left no-repeat;
-      background-size: contain;
-      background-position: 0 5px;
-      width: 20px;
-      height: 25px;
-    }
+        .p-CH{
+            background: url('../../assets/images/switzerland.svg') left no-repeat;
+            background-size: contain;
+            background-position: 0 5px;
+            width: 20px;
+            height: 25px;
+        }
 
-    .p-FR{
-      background: url('../../assets/images/france.svg') left no-repeat;
-      background-size: contain;
-      background-position: 0 5px;
-      width: 20px;
-      height: 25px;
-    }
+        .p-FR{
+            background: url('../../assets/images/france.svg') left no-repeat;
+            background-size: contain;
+            background-position: 0 5px;
+            width: 20px;
+            height: 25px;
+        }
 
-    .p-DE{
-      background: url('../../assets/images/germany.svg') left no-repeat;
-      background-size: contain;
-      background-position: 0 5px;
-      width: 20px;
-      height: 25px;
-    }
+        .p-DE{
+            background: url('../../assets/images/germany.svg') left no-repeat;
+            background-size: contain;
+            background-position: 0 5px;
+            width: 20px;
+            height: 25px;
+        }
 
-    .p-PL{
-      background: url(../../assets/images/poland.svg) left no-repeat;
-      background-size: contain;
-      background-position: 0 5px;
-      width: 20px;
-      height: 25px;
+        .p-PL{
+            background: url(../../assets/images/poland.svg) left no-repeat;
+            background-size: contain;
+            background-position: 0 5px;
+            width: 20px;
+            height: 25px;
+        }
     }
-  }
 
 }
 
 .newslist{
-  .card-title{
-    color: @white-color
-  }
+    .card-title{
+        color: @white-color
+    }
 }
 
 .breakpoint-small-down({

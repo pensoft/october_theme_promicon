@@ -1,0 +1,18 @@
+title = "Your suggestions for a target policy"
+layout = "default"
+url = "/suggestions-target-policy"
+
+[SimpleContactFormComponent]
+templates = "template2"
+message_label = "Your suggestion"
+==
+<div class="container">
+    <div class="row news_column">
+		<div class="col-xs-12">
+			<h1 class="display-1">Your suggestions for a target policy</h1>
+			<div class="contact_info">
+				{% component 'SimpleContactFormComponent' %}
+			</div>
+		</div>
+    </div>
+</div>

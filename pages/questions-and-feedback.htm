@@ -1,0 +1,18 @@
+title = "Questions and Feedback"
+layout = "default"
+url = "/questions-feedback"
+
+[SimpleContactFormComponent]
+templates = "template2"
+message_label = "Please type your questions and feedback here"
+==
+<div class="container">
+    <div class="row news_column">
+		<div class="col-xs-12">
+			<h1 class="display-1">Questions and Feedback</h1>
+			<div class="contact_info">
+				{% component 'SimpleContactFormComponent' %}
+			</div>
+		</div>
+    </div>
+</div>

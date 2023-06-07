@@ -64,12 +64,6 @@ return Redirect::to('/media-center/flyer');
         {% spaceless %}
 
 
-        <div class="card profile card-profile">
-            <p><strong>{{record.name}}</strong></p>
-            <a href="{{ record.file.path }}#file_name={{record.file.file_name}}" rel="noopener noreferrer" target="_blank">
-                <img class="card-img-top fr-fic fr-dii" src="{{record.presentation_image.path}}" alt="{{record.name}}" data-result="success"></a>
-            <p align="center"><a class="btn btn-primary" href="{{ record.file.path }}#file_name={{record.file.file_name}}" target="_blank">Download</a></p>
-        </div>
 
 
 

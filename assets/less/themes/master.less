@@ -429,10 +429,10 @@ footer .align-items-center{
   padding-left: 0!important;
   padding-right: 0!important;
   .col-xs-12, .col-xs-11, .col-xs-10, .col-xs-9, .col-xs-8, .col-xs-7, .col-xs-6, .col-xs-5, .col-xs-4, .col-xs-3, .col-xs-2, .col-xs-1{
-    margin-left: 0!important;
-    margin-right: 0!important;
-    padding-left: 0!important;
-    padding-right: 0!important;
+    //margin-left: 0!important;
+    //margin-right: 0!important;
+    //padding-left: 0!important;
+    //padding-right: 0!important;
   }
 }
 
@@ -498,7 +498,7 @@ h2{
 }
 
 .policy_corner_coming_soon{
-    background: @link-color;
+    background: @button-background-color;
     padding: 40px 60px;
     color: @white-color;
     border-radius: 20px;
@@ -528,20 +528,58 @@ h2{
 
 
 .policy-briefs{
-    .card-img, .card-img-top {
-        .rounded-tr(10px);
-        .rounded-tl(10px);
-        .rounded-br(10px);
-        .rounded-bl(10px);
+
+    .card.profile{
+        width: 23% !important;
+        .breakpoint-large-down({
+            width: 100% !important;
+        });
     }
 
     img.card-img-top{
         width: 100%!important;
-        height: auto;
+        height: 220px;
         object-fit: cover;
+        object-position: top;
         margin: 50px auto;
         display: flex;
         justify-self: center;
+        border-radius: 10px!important;
+    }
+    .card-header{
+        margin-bottom: 20px!important;
+    }
+
+    .suggestions_questions{
+        display: flex;
+        justify-content: space-evenly;
+        .suggestions{
+            background: @button-background-color url("../../assets/images/Group5.svg") no-repeat;
+            background-size: 50px;
+            background-position: 30px center;
+            color: @white-color;
+            font-weight: bold;
+            font-size: 1.1em;
+            border-radius: 10px;
+            padding: 30px 30px 30px 105px;
+            margin-top: 50px;
+            display: block;
+        }
+        .questions{
+            background: @black-color url("../../assets/images/Group7.svg") no-repeat;
+            background-size: 50px;
+            background-position: 30px center;
+            color: @white-color;
+            font-weight: bold;
+            font-size: 1.1em;
+            border-radius: 10px;
+            padding: 30px 30px 30px 105px;
+            margin-top: 50px;
+            display: block;
+        }
+        a:hover{
+            opacity: 0.7!important;
+        }
     }
 }
 
