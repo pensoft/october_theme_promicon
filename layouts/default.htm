@@ -40,6 +40,7 @@ theme = "light-bottom"
     <script src="{{ 'assets/vendor/bootstrap/js/modal.js'|theme  }}"></script>
     <script type="text/javascript" src="{{ 'assets/js/slick.min.js'|theme }}"></script>
 	<script src="{{ 'assets/js/ckeditor/ckeditor.js'|theme}}"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async="" defer=""></script>
     <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -52,6 +53,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     {% framework extras %}
     {% styles %}
     {% scripts %}
+
+     <!-- Matomo -->
+<script>
+  var _paq = window._paq = window._paq || [];
+  / tracker methods like "setCustomDimension" should be called before "trackPageView" /
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//matomo.pensoft.net/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '19']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Code -->
 </head>
 
 <body>

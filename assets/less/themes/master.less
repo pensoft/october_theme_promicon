@@ -502,6 +502,12 @@ h2{
     padding: 40px 60px;
     color: @white-color;
     border-radius: 20px;
+    display: grid;
+    margin-top: 30px;
+    .breakpoint-small-down({
+        z-index: 2;
+        position: relative;
+    });
 
 
     h3{
@@ -515,7 +521,7 @@ h2{
         height: 270px;
         object-fit: cover;
         object-position: top;
-        border-radius: 50%;
+        border-radius: 10px;
         margin: 50px auto;
         display: flex;
         justify-self: center;
@@ -559,9 +565,8 @@ h2{
             background-position: 30px center;
             color: @white-color;
             font-weight: bold;
-            font-size: 1.1em;
             border-radius: 10px;
-            padding: 30px 30px 30px 105px;
+            padding: 20px 20px 20px 105px;
             margin-top: 50px;
             display: block;
         }
@@ -571,9 +576,8 @@ h2{
             background-position: 30px center;
             color: @white-color;
             font-weight: bold;
-            font-size: 1.1em;
             border-radius: 10px;
-            padding: 30px 30px 30px 105px;
+            padding: 20px 20px 20px 105px;
             margin-top: 50px;
             display: block;
         }
