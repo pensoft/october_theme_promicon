@@ -73,23 +73,32 @@ function onStart(){
 		{% component 'Timeline' %}
 	</div>
 </div>
+
 <div class="container">
 	<h2 class="latest_updates">Follow latest updates</h2>
-	<!-- subscribes -->
 	<div class="row">
-		<div class="col-sm-8 col-xs-12">
-			<div class="twitter-widget">
-			    <a class="twitter-timeline" href="https://twitter.com/promiconh2020?ref_src=twsrc%5Etfw">Tweets by PROMICON</a>
-                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+		<div class="col-sm-6 col-xs-12">
+			{% if this.theme.facebook %}
+			<div class="fb-page" 
+				data-href="{{this.theme.facebook_url}}" 
+				data-tabs="timeline" 
+				data-width="500" 
+				data-height="300" 
+				data-small-header="false" 
+				data-adapt-container-width="true" 
+				data-hide-cover="false" 
+				data-show-facepile="false">
+				<blockquote cite="{{this.theme.facebook_url}}" class="fb-xfbml-parse-ignore">
+					<a href="{{this.theme.facebook_url}}">{{this.theme.name}}</a>
+				</blockquote>
 			</div>
+			{% endif %}
 		</div>
 		<div class="col-sm-4 col-xs-12">
-
 			<div class="subscribe-container">
-
 				<div class="subscribe-items text-center d-flex row">
 					{% if this.theme.twitter %}
-					<a href="{{this.theme.twitter_url}}" target="_blank" class="col-xs col-md-12 btn p-primary pr p-twitter large" style="line-height: 1.2em;"></a>
+					<a href="{{this.theme.twitter_url}}" target="_blank" class="col-xs col-md-12 btn p-primary pr p-twitter big"></a>
 					{% endif %}
 					{% if this.theme.facebook %}
 					<a href="{{this.theme.facebook_url}}" target="_blank" class="col-xs col-md-12 btn pr p-primary p-facebook big"></a>
@@ -118,10 +127,6 @@ function onStart(){
 					{%endif%}
 				</div>
 			</div>
-
-
 		</div>
 	</div>
-
-
 </div>
