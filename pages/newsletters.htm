@@ -20,7 +20,7 @@ use Pensoft\Media\Models\Newsletters;
 use System\Models\File;
 
 function onStart(){
-	$this['mediaNewslettersList'] =  Newsletters::get();
+	$this['mediaNewslettersList'] =  Newsletters::orderBy('date', 'desc')->get();
 	if(get('download')){
 		$file = File::find((int)get('download'));
 		$file_name = $file->getLocalPath();
@@ -71,8 +71,8 @@ return Redirect::to('/media-center/newsletters');
 				{% else %}
 					<br><a href="{{ record.file.path }}#file_name={{record.file.file_name}}" target="_blank" title="{{record.name}}" class="btn btn-primary">Download</a>
 				{% endif %}
-					
-				
+
+
 			</div>
 		</div>
 

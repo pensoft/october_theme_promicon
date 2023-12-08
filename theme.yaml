@@ -1,4 +1,4 @@
-name: "Promicon"
+name: "PROMICON"
 author: "Pensoft"
 homepage: "https://pensoft.net"
 code: "Pensoft-Promicon"
@@ -72,7 +72,7 @@ form:
                 default: My first project website
             author:
                 label: Author
-                default: 
+                default:
             site_icon:
                 label: Site icon
                 comment: Add new site icon, your theme recomends a icon size of 32x32
