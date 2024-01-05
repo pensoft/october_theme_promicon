@@ -37,10 +37,11 @@ function onStart(){
 		{% for record in records %}
 		{# Use spaceless tag to remove spaces inside the A tag. #}
 		{% spaceless %}
-		<div class="col-xs">
+		<div class="col-md-5 col-xs-12">
 			<div class="card-container">
-				<span class="card_title">{{record.name}}, {{record.date |date('F Y')}}</span>
+				<span class="card_title" style="min-height: 70px;">{{record.name}}</span>
 				<div class="body">{{record.description | raw}}</div>
+				<span class="date"> {{record.date |date('d F Y')}}</span> <br>
 				<div class="row link mt-1">
 					{% for link in record.link %}
 					<a href="{{link.url}}" target="_blank" class="btn btn-primary">{{link.text}}</a> &nbsp; 

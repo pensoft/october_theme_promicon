@@ -8,7 +8,7 @@ robot_index = "index"
 robot_follow = "follow"
 
 [article_highlights]
-maxItems = 3
+maxItems = 2
 title = "Latest from the project"
 baseUrl = "/news"
 templates = "template3"
@@ -94,9 +94,9 @@ function onStart(){
 			</div>
 			{% endif %}
 		</div>-->
-		<div class="col-sm-4 col-xs-12">
+		<div class="col-sm-12 col-xs-12">
 			<div class="subscribe-container">
-				<div class="subscribe-items text-center d-flex row">
+				<div class="subscribe-items row">
 					{% if this.theme.twitter %}
 					<a href="{{this.theme.twitter_url}}" target="_blank" class="col-xs col-md-12 btn p-primary pr p-twitter big"></a>
 					{% endif %}
@@ -115,8 +115,8 @@ function onStart(){
 					{% if this.theme.researchgate %}
 					<a href="{{this.theme.researchgate_url}}" target="_blank" class="col-xs col-md-12 btn pr p-primary p-researchgate big" style="width: 64px;"></a>
 					{% endif %}
-				</div>
-				<div class="subscribe-items d-flex justify-content-evenly flex-column">
+				<!--/div>
+				<div class="subscribe-items d-flex justify-content-evenly flex-column"-->
 
 					{%if this.theme.subscribe%}
 					<a href="{{this.theme.subscribe}}" target="_blank" class="btn btn-primary">Subscribe for our newsletter</a>

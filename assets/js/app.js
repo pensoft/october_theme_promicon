@@ -101,21 +101,24 @@ $(document).ready(function() {
         // Bind the click event handler
         $(this).find("a").click(function (e) {
             if($(this).hasClass('active')) {
-                $content.slideDown({
-                    scrollTop: $content.offset().top - $('header').height()
-                }, speed);
-                var screenSize = getScreenSize();
-                if (screenSize.width < 800) {
-                    // scroll to element
-                    $('html, body').animate({
-                        scrollTop: $content.offset().top - $('header').height() + 300  // mobile
+                if($content){
+                    $content.slideDown({
+                        scrollTop: $content.offset().top - $('header').height()
                     }, speed);
-                }else{
-                    //scroll to element icons top
-                    $('html, body').animate({
-                        scrollTop:  $content.offset().top - $('header').height() + 300
-                    }, speed);
+                    var screenSize = getScreenSize();
+                    if (screenSize.width < 800) {
+                        // scroll to element
+                        $('html, body').animate({
+                            scrollTop: $content.offset().top - $('header').height() + 300  // mobile
+                        }, speed);
+                    }else{
+                        //scroll to element icons top
+                        $('html, body').animate({
+                            scrollTop:  $content.offset().top - $('header').height() + 300
+                        }, speed);
+                    }
                 }
+                
                 e.preventDefault();
                 return false;
             }
@@ -164,6 +167,45 @@ $(document).ready(function() {
 		'<a class="folder-background" style="display:flex; background: url(https://promicon.eu/storage/app/media/pensoft/Dissemination-report-forms.svg) center center no-repeat; background-size: 100px; height: 200px" href="/internal-documents/dissemination-report-forms" title="Dissemination report forms"></a>\n' +
 		'<h3 class="card-header"><a href="/internal-documents/dissemination-report-forms" title="Dissemination report forms" style="color: #fff;">Dissemination report forms</a></h3>\n' +
 		'</div>').insertAfter($('.card.internal').last());
+
+
+    $('.home .row.newslist').before('<div class="row youtube_video_container"><div class="col-xs-12"><div class="youtube-video " data-id="7WwxjBpIcLI"><img src="/storage/app/media/video-image-promicon.jpg" data-src="/storage/app/media/video-image-promicon.jpg" alt="Video Thumbnail" class="fr-fic fr-dii" style="width: 100%; border-radius: 5px;">\n' +
+        '\t\t\t<div class="play-button">\n' +
+        '\t\t\t\t<br>\n' +
+        '\t\t\t</div>\n' +
+        '\t\t\t<div class="iframe-container" style="display:none;">\n' +
+        '\t\t\t\t<br>\n' +
+        '\t\t\t</div></div></div></div></div></div>');
+
+
+        var youtubeVideos = document.querySelectorAll(".youtube-video");
+
+        youtubeVideos.forEach(function (video) {
+            video.addEventListener("click", function () {
+                console.log(123);
+                video.style.paddingBottom = '56.25%';
+                var videoId = this.getAttribute("data-id");
+                var iframe = document.createElement("iframe");
+
+                iframe.setAttribute("src",
+                    (videoId.indexOf("?") !== -1 ?
+                        ("https://www.youtube.com/embed/" + videoId) :
+                        ("https://www.youtube.com/embed/" + videoId + "?autoplay=1&rel=0"))
+                );
+                iframe.setAttribute("frameborder", "0");
+                iframe.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture");
+                iframe.setAttribute("allowfullscreen", "");
+                iframe.setAttribute("width", "100%");
+                iframe.setAttribute("height", "100%");
+
+                var iframeContainer = this.querySelector(".iframe-container");
+                iframeContainer.innerHTML = "";
+                iframeContainer.appendChild(iframe);
+                iframeContainer.style.display = "block";
+                this.querySelector("img").style.display = "none";
+                this.querySelector(".play-button").style.display = "none";
+            });
+        });
 
 });
 
@@ -542,11 +584,13 @@ function init() {
             }
         }
         // keepFooter(documentHasScroll());
+        
 
     });
     // appendProfile()
     appendSignIn()
     appendSignOut()
+
 }
 
 
