@@ -77,3 +77,100 @@ ul.partners_logos_list li:hover{
 g.fill_PT{
   background: red!important;
 }
+
+.innovation-board{
+
+  .innovation-subhead{
+    text-align: left;
+    font-weight: 600;
+    font-size: 23px;
+    color: #000000;
+  }
+  
+  .innovation-head{
+    text-align: left;
+    font-weight: 600;
+    font-size: 57px;
+    color: #000000;
+  }
+
+  .member-card{
+    padding: 20px;
+    box-shadow: 0px 0px 10px #00000029;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    min-height: 444px;
+
+  .member-head{
+    margin-bottom: 16px;
+    position: relative;
+    .btn-linkedin{
+      display: flex;
+      justify-content: end;
+      align-items: center;
+      text-align: end;
+      max-height: 44px;
+      min-width: 188px;
+      position: relative;
+      font-size: 18px;
+      &:before{
+        content: '';
+        position: absolute !important;
+        left: 12px !important;
+        background: url(../../assets/images/linkedin-icon.svg) center center no-repeat !important;
+        background-size: 17px !important;
+        width: 17px !important;
+        height: 17px !important;
+      }
+      &:hover{
+        opacity: 0.65;
+      }
+    }
+    .img-container{
+      width: 106px;
+      height: 106px;
+      img{
+        border-radius: 50%;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  .member-name{
+    font-weight: 600;
+    font-size: 22px;
+    color: #000000;
+  }
+
+  .member-position {
+    font-size: 18px !important;
+    color: #CA4771 !important;
+    margin-bottom: 18px !important;
+  }
+
+  .member-description p, .institution-full p{
+    text-align: left !important;
+    font-size: 18px !important;
+    color: #727272 !important;
+  }
+
+  .read-more{
+    a{
+      font-size: 18px;
+      color: #8577B4;
+      &:hover{
+        color: #CA4771;
+      }
+    }
+  }
+  }
+  .breakpoint-large-down({
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    padding: 3px;
+    flex-direction: column;
+  });
+}

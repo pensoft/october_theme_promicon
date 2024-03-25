@@ -24,7 +24,34 @@ $(document).ready(function() {
 	width100.width(innerWidth);
 
 
+    /*
+     * Partners accorion behaviour
+    **/
+    $('.full-description-toggle').click(function(e) {
+        e.preventDefault();
 
+        var $this = $(this);
+        var $parentDiv = $this.closest('.member-card');
+        var $shortDescription = $parentDiv.find('.member-description');
+        var $fullDescription = $parentDiv.find('.institution-full');
+        var $toggleText = $this.find('.toggle-text');
+
+        var readMoreText = $this.data('read-more');
+        var hideText = $this.data('hide');
+
+        $shortDescription.toggle('slow', function() {
+            //animation complete
+        });
+        $fullDescription.toggle('slow', function() {
+            if ($fullDescription.is(':visible')) {
+                $toggleText.text(hideText);
+            } else {
+                $toggleText.text(readMoreText);
+            }
+        });
+
+        $this.toggleClass('toggled');
+    });
 
 	$('body').on('click', '.work_packages .accordion-toggle, .messages .accordion-toggle', function () {
 		if ($(this).next(".accordion-content").is(':visible')) {

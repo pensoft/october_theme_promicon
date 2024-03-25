@@ -1,0 +1,40 @@
+<!-- Reusable component for innovation board cards -->
+<div class="member-card">
+
+    <div class="row between-xs member-head">
+        <div class="img-container">
+            {% if member.avatar %}
+            <img src="{{ member.avatar.thumb(106, 106, {mode: 'crop'}) }}" alt="Memver Avatar">
+            {% else %}
+            <img src="{{ 'default-member-avatar.png'|media }}" alt="Memver Avatar">
+            {% endif %}
+        </div>
+        {% if member.linkedin_url %}
+        <a href="{{member.linkedin_url}}" target="_blank" class="btn btn-primary btn-linkedin">{{'LinkedIn profile' |_}}</a>
+        {% endif %}
+    </div>
+
+    {% if member.names %}
+    <div class="col-xs-12 member-name">{{ member.names }}</div>
+    {% endif %}
+
+    {% if member.position %}
+    <div class="col-xs-12 member-position">{{ member.position }}</div>
+    {% endif %}
+
+    {% if member.content %}
+    <div class="col-xs-12 member-description">{{ member.content|slice(0, 255)|raw }}</div>
+
+    <div class="col-xs-12 institution-full" style="display: none;">{{member.content|raw}}</div>
+    {% endif %}
+
+    <div class="col-xs-12 read-more">
+        <a href="" class="full-description-toggle" 
+            data-read-more="{{ 'Read more' | _ }}"
+            data-hide="{{ 'Read less' | _ }}">
+            <span class="toggle-text">{{ 'Read more' | _ }}</span>
+            <span class="plusminus"></span>
+        </a>
+    </div>
+
+</div>

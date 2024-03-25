@@ -1,0 +1,35 @@
+url = "/innovation-board"
+layout = "default"
+title = "Innovation Board"
+is_hidden = 0
+robot_index = "index"
+robot_follow = "follow"
+
+[jumbotron innovation-intro]
+jumbotron = "innovation-intro"
+title = 0
+background = "transperant"
+description_limit = 0
+
+==
+function onStart(){
+    use Pensoft\Cardprofiles\Models\Profiles;
+
+    $this['members'] = Profiles::where('category_id',  3)->get();
+
+    foreach ( $this->members as $member) {
+        if ($member->avatar){
+            $member->avatar_url = $member->avatar->getThumb(106, 106, ['mode' => 'crop']);
+        }
+    }
+}
+?>
+==
+
+<div class="container-fluid innovation-board">
+    <div class="container mb-0 pb-0">
+        <h1 class="innovation-head">Innovation Board</h1>
+    </div>
+    {% component 'innovation-intro' %}
+    {% partial 'innovation-records' members=members %}
+</div>
