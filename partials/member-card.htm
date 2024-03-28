@@ -23,7 +23,7 @@
     {% endif %}
 
     {% if member.content %}
-    <div class="col-xs-12 member-description">{{ member.content|slice(0, 255)|raw }}</div>
+    <div class="col-xs-12 member-description">{{ member.content|slice(0, 310)|raw }}</div>
 
     <div class="col-xs-12 institution-full" style="display: none;">{{member.content|raw}}</div>
     {% endif %}

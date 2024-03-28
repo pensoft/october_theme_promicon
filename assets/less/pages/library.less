@@ -38,11 +38,17 @@
         top: 0px;
         height: 90px;
         right: 0;
+        .breakpoint-large-down({
+            position: absolute;
+            top: -16px;
+            height: 90px;
+            left: 29px;
+        });
     }
 }
 #searchLibrary{
     position: absolute;
-    top: 289px;
+    top: 78px;
     left: 183px;
     form{
         width: 386px;
@@ -77,7 +83,6 @@
         position: unset!important;
 
         width: 100%;
-        font-size: 18px;
         color: #122642!important;
         box-sizing: border-box;
         padding: 0.7rem 1rem;
@@ -102,12 +107,18 @@
             font-weight: 400;
             font-size: 40px;
         }
+
+        .breakpoint-large-down({
+            width: 25px;
+        });
     }
 
     .breakpoint-large-down({
         margin: 0 0 0 0;
-        width: 95%!important;
+        width: 50%!important;
         display: unset;
+        top: 207px;
+        left: 153px;
     })
 }
 
