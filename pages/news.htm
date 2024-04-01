@@ -5,25 +5,48 @@ is_hidden = 0
 robot_index = "index"
 robot_follow = "follow"
 
-[list]
-maxItems = 8
-templates = "template3"
-thumb_width = 250
-thumb_height = 250
-no_records_message = "No records found"
-
 [related_articles]
 limit = 4
 thumb_width = 250
 thumb_height = 250
+
 ==
 <?php
+use Pensoft\Articles\Models\Category;
+use Pensoft\Articles\Models\Article;
+
 function urlencode($string){
     return trim(urlencode($string));
 }
+
+function onFilterArticles()
+{
+    $categoryId = input('categoryId');
+
+    if ($categoryId === 'all') {
+        $this['records'] = Article::news()->where('published_at', '<=', 'now()')
+                                          ->where('published', 'true')
+                                          ->orderBy('published_at', 'DESC')
+                                          ->get();
+    } else {
+        $this['records'] = Article::news()->whereHas('categories', function ($query) use ($categoryId) {
+            $query->where('id', $categoryId);
+        })->where('published_at', '<=', 'now()')
+          ->where('published', 'true')
+          ->orderBy('published_at', 'DESC')
+          ->get();
+    }
+}
+
 function onStart()
 {
     $this['article'] = Pensoft\Articles\Models\Article::where('slug', $this->param('id'))->first();
+	$this['categories'] = Category::orderBy('sort_order')->orderBy('created_at', 'desc')->get();
+	$this['records'] = Article::news()->where('published_at', '<=', 'now()')
+	->where('published', 'true')
+	->orderBy('published_at', 'DESC')
+	->get();
+
     if($this['article']){
 
         $this['is_detail_page'] = $this['article'] ? true : false;
@@ -72,7 +95,7 @@ function onStart()
 {% if is_detail_page %}
 	<div class="container-fluid">
 		<div class="container">
-			<a href="/news" class="back-to"> &#10094; Back to all News</a>
+			<a href="javascript:;" class="back-to" onclick="window.history.back()"> &#10094; Back to all News</a>
 			<div class="news-title">
 				<h1>{{article.title}}</h1>
 			</div>
@@ -115,12 +138,38 @@ function onStart()
 	</div>
 
     {% else %}
-    <div class="container">
+	
+    <div class="container" style="position: relative;">
         <h1 class="display-1">News</h1>
-        <div class="row">
-            <div class="col-xs">
-                {% component 'list' %}
-            </div>
-        </div>
+
+		<div class="category-tabs-container mb-2">
+			{% if categories.count > 0 %}
+			<div class="row category-tabs">
+				<a href="javascript:;"
+				class="active"
+				data-request="onFilterArticles"
+				data-request-data="categoryId: 'all'"
+				data-request-update="'components/newslist-records': '#newslist-records'">
+				All News
+				</a>
+				{% for category in categories %}
+					<a href="javascript:;" 
+					data-request="onFilterArticles" 
+					data-request-data="categoryId: {{ category.id }}" 
+					data-request-update="'components/newslist-records': '#newslist-records'">
+					{{ category.name }}
+					</a>
+				{% endfor %}
+			</div>
+			{% endif %}
+		</div>
+		<div class="newslist-records" id="newslist-records">
+			{% partial 'components/newslist-records' %}
+		</div>
     </div>
+	
+	<a class="toTheTop" title="Back to the top"></a>
+
     {% endif %}
+
+	

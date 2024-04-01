@@ -686,3 +686,47 @@ ul.pagination{
         }
     }
 }
+
+// ARROW TO THE TOP
+.toTheTop {
+  content: "";
+  background: url("../../assets/images/back-to-top.svg") no-repeat center;
+  background-size: 50px;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  display: none;
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  z-index: 1000;
+  transition: opacity 0.3s;
+
+  &.sticky{
+    position: absolute;
+  }
+
+  &:hover {
+      opacity: 0.7;
+  }
+
+  .breakpoint-laptop-down({
+      background-size: 48px;
+      width: 48px;
+      height: 48px;
+      bottom: 32px;
+      right: 28px;
+  });
+
+  .breakpoint-large-down({
+      background-size: 40px;
+      width: 40px;
+      height: 40px;
+      bottom: 28px;
+      right: 10px;
+  });
+}
+
+// .toTheTop .sticky {
+//   position: absolute;
+// }

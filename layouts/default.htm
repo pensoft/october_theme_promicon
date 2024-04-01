@@ -39,6 +39,8 @@ theme = "light-bottom"
     <script src="{{ 'assets/js/jquery-ui.js'|theme }}"></script>
     <script src="{{ 'assets/vendor/bootstrap/js/modal.js'|theme  }}"></script>
     <script type="text/javascript" src="{{ 'assets/js/slick.min.js'|theme }}"></script>
+    <link rel="stylesheet" href="{{ 'assets/css/aos.css'|theme }}">
+    <script src="{{ 'assets/js/aos.js'|theme }}"></script>
 	<script src="{{ 'assets/js/ckeditor/ckeditor.js'|theme}}"></script>
     <script src="https://www.google.com/recaptcha/api.js" async="" defer=""></script>
     <!-- Google Tag Manager -->
@@ -125,7 +127,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     {% endif %}
 
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
+    
+    <script>
+        $(function() {
+            AOS.init();
+        });
+    </script>
+    
 </body>
 
 </html>

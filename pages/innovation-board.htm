@@ -30,6 +30,11 @@ function onStart(){
     <div class="container mb-0 pb-0">
         <h1 class="innovation-head">Innovation Board</h1>
     </div>
-    {% component 'innovation-intro' %}
+    <div class="container innovation-container">
+    {% component 'innovation-intro' %}    
+    </div>
+    <div class="container head-container">
+        <h1 class="innovation-subhead">Innovation Board members</h1>
+    </div>
     {% partial 'innovation-records' members=members %}
 </div>
