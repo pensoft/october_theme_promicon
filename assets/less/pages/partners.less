@@ -81,17 +81,65 @@ g.fill_PT{
   padding-top: 0 !important;
   margin-top: 0 !important;
 }
+
+
 .innovation-board{
 @colorWithOpacityRGBA: rgba(0, 0, 0, 0.16);
-// overflow: hidden;
+overflow: hidden;
 
   .innovation-container{
-    overflow: hidden;
-    .breakpoint-large-down({
-      overflow: visible;
-    });
+    .innovation-second-row{
+      justify-content: end;
+    }
+    .innovation-first{
+      max-width: 80% !important;
+      .breakpoint-laptop-down({
+        max-width: unset !important;
+      })
+    }
+    .innovation-second{
+      max-width: 95% !important;
+      .breakpoint-laptop-down({
+        max-width: unset !important;
+      })
+    }
+    .container{
+      padding: 20px !important;
+    }
+    position: relative;
+    &:before{
+      position: absolute;
+      content: "";
+      background: url("../../assets/images/Bacteria/mobile-bacteria-07.svg") center center no-repeat;
+      background-size: 100%;
+      width: 340px;
+      height: 340px;
+      left: -120px;
+      bottom: -32px;
+      transform: rotate(195deg) rotateY(3.142rad);
+      .breakpoint-large-down({
+        display: none;
+      });
+    }
+    &:after{
+      position: absolute;
+      content: "";
+      background: url("../../assets/images/Bacteria/mobile-bacteria-06.svg") center center no-repeat;
+      background-size: 100%;
+      width: 400px;
+      height: 400px;
+      right: -83px;
+      bottom: 200px;
+      transform: rotate(285deg);
+      .breakpoint-large-down({
+        display: none;
+      });
+    }
+    .container .row{
+      text-align: start !important;
+    }
   }
-  
+
   .head-container{
     padding-left: 1rem !important;
     padding-top: 0 !important;
@@ -114,43 +162,6 @@ g.fill_PT{
     font-size: 57px;
     color: #000000;
     margin-top: 48px;
-  }
-
-  .intro-bacteria-first{
-    position: relative;
-    &:after{
-      position: absolute;
-      content: "";
-      background: url("../../assets/images/Bacteria/mobile-bacteria-06.svg") center center no-repeat;
-      background-size: 400px;
-      width: 400px;
-      height: 400px;
-      right: -27%;
-      bottom: -19%;
-      transform: rotate(285deg);
-      .breakpoint-large-down({
-        display: none;
-      });
-    }
-  }
-
-  .intro-bacteria-second{
-    position: relative;
-    display: flex;
-    &:before{
-      position: absolute;
-      content: "";
-      background: url("../../assets/images/Bacteria/mobile-bacteria-07.svg") center center no-repeat;
-      background-size: 320px;
-      width: 320px;
-      height: 320px;
-      left: -50%;
-      bottom: -40%;
-      transform: rotate(205deg) rotateY(3.142rad);
-      .breakpoint-large-down({
-        display: none;
-      });
-    }
   }
 
   .member-card{
@@ -244,4 +255,10 @@ g.fill_PT{
     padding: 3px;
     flex-direction: column;
   });
+}
+
+@media (min-width: 1601px) {
+  .innovation-second-row{
+    justify-content: start !important;
+  }
 }
