@@ -67,6 +67,9 @@ $(document).ready(function() {
 
 	$('.nav.nav-pills').removeAttr('id');
 
+    $('#menuToggle').on('click', function() {
+        hideSearchForm();
+    });
 
 	$('.contact_info .card-body .body, .insider-info .card-body .body').each(function(){
 		var countParagraphs = $(this).find('p').length;
@@ -88,6 +91,12 @@ $(document).ready(function() {
 
         // 'data-aos-delay': '100'
     });
+
+
+    // window.innerWidth <= 1024 ? $('.search-btn-responsive').css('visibility', 'visible') : $('.search-responsive').css('visibility', 'hidden');
+
+    var responsiveSearch = $('.search-btn-responsive');
+    window.innerWidth <= 1024 ? responsiveSearch.css('display', 'unset') : responsiveSearch.css('display', 'none');
 
     // Handle the back to top arrow
     const backToTopButton = $('.toTheTop');
@@ -121,12 +130,12 @@ $(document).ready(function() {
     adjustButtonPosition();
 
     $(window).scroll(adjustButtonPosition);
-
+    
     backToTopButton.click(function() {
         $('html, body').animate({ scrollTop: 0 }, 'slow');
         return false;
     });
-
+    
     var newsReadMore = $('.news .content').find('.dorsal');
     if(newsReadMore.length){
         newsReadMore.nextAll('p').wrapAll("<div class='toogle-contact-paragraphs'></div>")
@@ -203,6 +212,30 @@ $(document).ajaxComplete(function() {
 });
 
 
+function showSearchForm(){
+    $('#layout-header').toggleClass('full-width');
+    $('#search').toggle();
+    // $('#menu li').hide();
+    // $('nav a:not(.navbar-brand)').hide();
+}
+
+function hideSearchForm(){
+    $('#layout-header').toggleClass('full-width');
+    $('#search').hide();
+    // $('#menu li').show();
+    // $('nav a').show();
+}
+
+function appendSearchAndSocialMedia(){
+	var liSearch = '<li class="nav-item search_field"><a class="pr p-search middle search-btn" href=\"javascript: void(0);\" onclick=\"showSearchForm();\"></a></li>';
+    
+    var headerNavbarLogin = $('#headerNavbarNav');
+    headerNavbarLogin.find('>ul').append(liSearch);
+    var menu = $('#menu');
+    menu.find('>ul').append(liSearch);
+
+}
+
 function scrollPartners(){
 	$('html, body').animate({
 		scrollTop: $("#mycomponentpartners").offset().top - 100
@@ -215,22 +248,22 @@ function encodeURIObject(data){
     }).join('&');
 }
 
-function appendProfile() {
-    $(document).on('profile', function (e) {
-        var headerNavbarNav = $('#headerNavbarNav');
-        var li = '<li class="nav-item"><a href="/profile" target = "_self">Profile</a></li >';
-        headerNavbarNav.find('>ul').append(li);
-    });
-}
-function appendSignIn(){
-    $(document).on('signin', function (e) {
-        var headerNavbarLogin = $('#headerNavbarNav');
-        var li = '<li class="nav-item sign-in"><a href="/login" target = "_self">Login</a></li >';
-		headerNavbarLogin.find('>ul').append(li);
-		var menu = $('#menuToggle');
-		menu.find('>ul').append(li);
-    });
-}
+    function appendProfile() {
+        $(document).on('profile', function (e) {
+            var headerNavbarNav = $('#headerNavbarNav');
+            var li = '<li class="nav-item"><a href="/profile" target = "_self">Profile</a></li >';
+            headerNavbarNav.find('>ul').append(li);
+        });
+    }
+    function appendSignIn(){
+        $(document).on('signin', function (e) {
+            var headerNavbarLogin = $('#headerNavbarNav');
+            var li = '<li class="nav-item sign-in"><a href="/login" target = "_self">Login</a></li >';
+            headerNavbarLogin.find('>ul').append(li);
+            var menu = $('#menuToggle');
+            menu.find('>ul').append(li);
+        });
+    }
 
 function appendSignOut() {
     $(document).on('signout', function (e) {
@@ -573,7 +606,7 @@ function init() {
         }
         // keepFooter(documentHasScroll());
         
-
+        appendSearchAndSocialMedia()
     });
     // appendProfile()
     appendSignIn()

@@ -14,39 +14,64 @@ noRecordsMessage = "No records found"
 detailsPage = "-"
 detailsUrlParameter = "id"
 pageNumber = "{{ :page }}"
+
 ==
 <?php
 use Pensoft\Media\Models\Videos;
 use System\Models\File;
 
 function onStart(){
-	$this['mediaVideosList'] =  Videos::where('pensoft_media_videos.parent_id', null)->get();
-$this['mediaProjectVideosList'] =  Videos::where('pensoft_media_videos.parent_id', null)->where('type', 1)->get();
-$this['mediaRelevantVideosList'] =  Videos::where('pensoft_media_videos.parent_id', null)->where('type', 2)->get();
-$this['mediaLabVideosList'] =  Videos::where('pensoft_media_videos.parent_id', null)->where('type', 3)->get();
-if(get('download')){
-$file = File::find((int)get('download'));
-$file_name = $file->getLocalPath();
-$recordName = get('file_name') ? get('file_name') : 'PROMICON_video';
-$ext= $file->getExtension();
+    
+    $videoTypeOptions = [
+        '1' => 'Project video',
+        '2' => 'Relevant video',
+        '3' => 'Other video',
+    ];
+    
+    $categoryId = input('categoryId', 'all');
+    if ($categoryId !== 'all' && !array_key_exists($categoryId, $videoTypeOptions)) {
+        return redirect('videos');
+    }
 
-if (file_exists($file_name)) {
-header('Content-Description: File Transfer');
-header('Content-Type: application/octet-stream');
-header("Content-Type: application/force-download");
-header('Content-Disposition: attachment; filename='.$recordName .'.'. $ext);
-header('Content-Transfer-Encoding: binary');
-header('Expires: 0');
-header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
-header('Pragma: public');
-header('Content-Length: ' . filesize($file_name));
-ob_clean();
-flush();
-readfile($file_name);
-exit();
-}
-return Redirect::to('/media-center/videos');
-}
+    $this['categoryId'] = $categoryId;
+
+    if ($categoryId === 'all') {
+        $records = Videos::where('parent_id', null)->paginate(8);
+    } else {
+        $categoryId = (int) $categoryId;
+        $records = Videos::where('parent_id', null)->where('type', $categoryId)->paginate(8);
+    }
+
+    if ($categoryId !== 'all') {
+        $records->appends(['categoryId' => $categoryId]);
+    }
+
+    $this['mediaVideosList'] = $records;
+
+    if(get('download')){
+        $file = File::find((int)get('download'));
+        $file_name = $file->getLocalPath();
+        $recordName = get('file_name') ? get('file_name') : 'PROMICON_video';
+        $ext= $file->getExtension();
+
+        if (file_exists($file_name)) {
+            header('Content-Description: File Transfer');
+            header('Content-Type: application/octet-stream');
+            header("Content-Type: application/force-download");
+            header('Content-Disposition: attachment; filename='.$recordName .'.'. $ext);
+            header('Content-Transfer-Encoding: binary');
+            header('Expires: 0');
+            header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+            header('Pragma: public');
+            header('Content-Length: ' . filesize($file_name));
+            ob_clean();
+            flush();
+            readfile($file_name);
+            exit();
+        }
+
+        return Redirect::to('/media-center/videos');
+    }
 }
 ?>
 ==
@@ -54,14 +79,17 @@ return Redirect::to('/media-center/videos');
     <a href="/media-center" class="back-to"> &#10094; Back to Media center</a>
     <h1 class="display-1">Videos</h1>
 
-    <div class="tabs">
-        <a class="" href="#allVideos">All videos</a>
-        <a class="" href="#projectVideos">General PROMICON videos</a>
-        <a class="" href="#proTalksVideos">PROtalks</a>
-        <a class="" href="#Lab_StoriesVideos">Lab_Stories</a>
+    
+    <div class="category-tabs-container mb-2">
+        <div class="row category-tabs" id="category-tabs">
+            <a href="{{ 'videos'|page }}?categoryId=all" class="{{ 'all' == categoryId ? 'active' : '' }}">All videos</a>
+            <a href="{{ 'videos'|page }}?categoryId=1" class="{{ 1 == categoryId ? 'active' : '' }}">General PROMICON videos</a>
+            <a href="{{ 'videos'|page }}?categoryId=2" class="{{ 2 == categoryId ? 'active' : '' }}">PROtalks</a>
+            <a href="{{ 'videos'|page }}?categoryId=3" class="{{ 3 == categoryId ? 'active' : '' }}">Lab_Stories</a>
+        </div>
     </div>
 
-    <div class="row" id="allVideos">
+    <div class="row">
         {% set records = mediaVideosList %}
         {% set displayColumn = mediaVideosList.displayColumn %}
         {% set noRecordsMessage = mediaVideosList.noRecordsMessage %}
@@ -75,6 +103,7 @@ return Redirect::to('/media-center/videos');
         <div class="col-md-6 col-xs-12">
             <div class="card-container">
                 <p class="font-weight-bold">{{record.name}}</p>
+                
                 {% if record.file %}
                 <video controls="" width="100%"><source src="{{record.file.path}}" type="video/mp4"></video>
 
@@ -99,9 +128,6 @@ return Redirect::to('/media-center/videos');
             </div>
         </div>
 
-
-
-
         {% endspaceless %}
         {% else %}
         {{ noRecordsMessage }}
@@ -109,153 +135,7 @@ return Redirect::to('/media-center/videos');
 
 
     </div>
-    <div class="row" id="projectVideos">
-
-        {% set records = mediaProjectVideosList %}
-        {% set displayColumn = mediaProjectVideosList.displayColumn %}
-        {% set noRecordsMessage = mediaProjectVideosList.noRecordsMessage %}
-        {% set detailsPage = mediaProjectVideosList.detailsPage %}
-        {% set detailsKeyColumn = mediaProjectVideosList.detailsKeyColumn %}
-        {% set detailsUrlParameter = mediaProjectVideosList.detailsUrlParameter %}
-
-        {% for record in records %}
-        {# Use spaceless tag to remove spaces inside the A tag. #}
-        {% spaceless %}
-        <div class="col-md-6 col-xs-12">
-            <div class="card-container">
-                <p class="font-weight-bold">{{record.name}}</p>
-                {% if record.file %}
-                <video controls="" width="100%"><source src="{{record.file.path}}" type="video/mp4"></video>
-
-                <p>Attachment: {{record.file.file_name}}, {{record.file.size}}</p>
-
-                <p><a class=" btn btn-primary large fluid download" href="{{ ''| page }}?{{queries}}&download={{record.file.id}}&file_name={{record.name|replace({' ': '_'})}}">Download</a></p>
-
-                {% endif %}
-
-                {% if record.youtube_url %}
-                <iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" src="{{record.youtube_url}}" width="100%" height="320"></iframe>
-
-                <p>&nbsp;</p>
-                {% endif %}
-
-                {% if record.vimeo_url %}
-                <iframe width="100%" height="320" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                        src="{{record.vimeo_url}}">
-                </iframe>
-                <p>&nbsp;</p>
-                {% endif %}
-            </div>
-        </div>
-
-
-
-
-        {% endspaceless %}
-        {% else %}
-        {{ noRecordsMessage }}
-        {% endfor %}
-
+    <div class="row container">
+        {{ records.render|raw }}
     </div>
-    <div class="row" id="proTalksVideos">
-        {% set records = mediaRelevantVideosList %}
-        {% set displayColumn = mediaRelevantVideosList.displayColumn %}
-        {% set noRecordsMessage = mediaRelevantVideosList.noRecordsMessage %}
-        {% set detailsPage = mediaRelevantVideosList.detailsPage %}
-        {% set detailsKeyColumn = mediaRelevantVideosList.detailsKeyColumn %}
-        {% set detailsUrlParameter = mediaRelevantVideosList.detailsUrlParameter %}
-
-        {% for record in records %}
-        {# Use spaceless tag to remove spaces inside the A tag. #}
-        {% spaceless %}
-        <div class="col-md-6 col-xs-12">
-            <div class="card-container">
-                <p class="font-weight-bold">{{record.name}}</p>
-                {% if record.file %}
-                <video controls="" width="100%"><source src="{{record.file.path}}" type="video/mp4"></video>
-
-                <p>Attachment: {{record.file.file_name}}, {{record.file.size}}</p>
-
-                <p><a class=" btn btn-primary large fluid download" href="{{ ''| page }}?{{queries}}&download={{record.file.id}}&file_name={{record.name|replace({' ': '_'})}}">Download</a></p>
-
-                {% endif %}
-
-                {% if record.youtube_url %}
-                <iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" src="{{record.youtube_url}}" width="100%" height="320"></iframe>
-
-                <p>&nbsp;</p>
-                {% endif %}
-
-                {% if record.vimeo_url %}
-                <iframe width="100%" height="320" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                        src="{{record.vimeo_url}}">
-                </iframe>
-                <p>&nbsp;</p>
-                {% endif %}
-            </div>
-        </div>
-
-
-
-
-        {% endspaceless %}
-        {% else %}
-        {{ noRecordsMessage }}
-        {% endfor %}
-
-    </div>
-    <div class="row" id="Lab_StoriesVideos">
-        {% set records = mediaLabVideosList %}
-        {% set displayColumn = mediaLabVideosList.displayColumn %}
-        {% set noRecordsMessage = mediaLabVideosList.noRecordsMessage %}
-        {% set detailsPage = mediaLabVideosList.detailsPage %}
-        {% set detailsKeyColumn = mediaLabVideosList.detailsKeyColumn %}
-        {% set detailsUrlParameter = mediaLabVideosList.detailsUrlParameter %}
-
-        {% for record in records %}
-        {# Use spaceless tag to remove spaces inside the A tag. #}
-        {% spaceless %}
-        <div class="col-md-6 col-xs-12">
-            <div class="card-container">
-                <p class="font-weight-bold">{{record.name}}</p>
-                {% if record.file %}
-                <video controls="" width="100%"><source src="{{record.file.path}}" type="video/mp4"></video>
-
-                <p>Attachment: {{record.file.file_name}}, {{record.file.size}}</p>
-
-                <p><a class=" btn btn-primary large fluid download" href="{{ ''| page }}?{{queries}}&download={{record.file.id}}&file_name={{record.name|replace({' ': '_'})}}">Download</a></p>
-
-                {% endif %}
-
-                {% if record.youtube_url %}
-                <iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" src="{{record.youtube_url}}" width="100%" height="320"></iframe>
-
-                <p>&nbsp;</p>
-                {% endif %}
-
-                {% if record.vimeo_url %}
-                <iframe width="100%" height="320" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                        src="{{record.vimeo_url}}">
-                </iframe>
-                <p>&nbsp;</p>
-                {% endif %}
-            </div>
-        </div>
-
-
-
-
-        {% endspaceless %}
-        {% else %}
-        {{ noRecordsMessage }}
-        {% endfor %}
-
-    </div>
-
-    <script>
-        initAccordeon('accordion-documents');
-        initAccordeon('accordion-project-documents');
-        initAccordeon('accordion-relevant-documents');
-        initAccordeon('accordion-lab-documents');
-    </script>
 </div>
