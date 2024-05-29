@@ -222,52 +222,7 @@
 }
 
 
-
 .news{
-
-  // .category-tabs-container{
-  //   display: flex;
-  //   justify-content: start;
-  //   align-items: center;
-
-  //   a{
-  //       position: relative;
-  //       // font-family: inter, Inter V;
-  //       font-size: 16px;
-  //       font-weight: 600;
-  //       padding: 10px 20px;
-  //       color: #9F87BE;
-  //       border: 2px solid #9F87BE;
-  //       border-radius: 5px;
-
-  //       &.active, &:hover{
-  //           background-color: #9F87BE;
-  //           color: #FFFFFF;
-  //       }
-
-  //       &:not(:last-child){
-  //           margin-right: 20px;
-  //       }
-
-  //       .breakpoint-large-down({
-  //           margin-bottom: 18px;
-  //       });
-
-  //   }
-  //   .category-tabs{
-  //       .breakpoint-large-down({
-  //           display: flex;
-  //           align-items: center;
-  //           justify-content: center;
-  //       });            
-  //   }
-  //   .breakpoint-large-down({
-  //       display: flex;
-  //       flex-direction: column;
-  //       align-items: center;
-  //       justify-content: center;
-  //   });     
-  // }
 
   //display: inline-flex;
   flex-direction: row;
@@ -283,9 +238,20 @@
       color: @default-color!important;
       font-size: 16px;
       border-radius: 5px;
-      height: 580px;
+      height: 560px;
       display: block;
-
+      .news-button-card, .col-xs-6{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 90%;
+        position: absolute;
+        bottom: 25px;
+      .breakpoint-large-down({
+        position: unset;
+        width: 0%;
+      });
+      }
       //Hide the share on related aricles
       .row .col-xs-6:not(:first-child){
         display: none;
@@ -294,6 +260,9 @@
       .breakpoint-small-down({
         height: auto;
       });
+  }
+    .card-column{
+      height: 530px !important;
   }
   .card-title{
     font-size: 20px;
