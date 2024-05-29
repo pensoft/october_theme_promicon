@@ -13,22 +13,40 @@ title = 1
 background = "transperant"
 templates = "template1"
 
-[accordion]
-maxItems = 10
-accordion = 1
-elementId = "structure"
-active = 0
-collapsible = "false"
-heightStyle = "content"
-iconsHeader = "ui-icon-blank"
-iconsHeaderActive = "ui-icon-blank"
-templates = "template3"
 ==
+
+<?php
+    use Pensoft\Accordions\Models\Item;
+
+    function onStart()
+    {
+        $records = Item::where('category_id', 1)->orderBy('sort_order')->get();
+        $this['records'] = $records;
+    }
+?>
+==
+
 {% component 'aboutContext' %}
 
-
+{% if records.count %}
 <div class="work_packages">
     <div class="container">
-        {% component 'accordion' %}
+        {% for record in records %}
+        <div class="accordion-border">
+            <div class="row middle-xs accordion-toggle">
+                <div class="col-xs-2 green_bullet">
+                    {% if record.prefix %} {{record.prefix}} {% endif %}
+                </div>
+                <div class="col-xs start-xs">
+                    {% if record.title %} {{record.title}} {% endif %}
+                </div>
+                <div class="col-xs-2 end-xs plusminus plus"><span class="plus"></span></div>
+            </div>
+            <div class="accordion-content" style="display: none;">
+                {% if record.body %} {{record.body | raw}} {% endif %}
+            </div>
+        </div>
+        {% endfor %}
     </div>
 </div>
+{% endif %}
