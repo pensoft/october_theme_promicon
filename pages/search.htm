@@ -1,6 +1,6 @@
-title = "Search"
 url = "/search"
 layout = "default"
+title = "Search"
 is_hidden = 0
 robot_index = "index"
 robot_follow = "follow"
@@ -10,6 +10,7 @@ resultsPerPage = 30
 showProviderBadge = 1
 noResultsMessage = "Your search returned no results."
 visitPageMessage = "Visit page"
+minQueryLength = 0
 ==
 <?php
 function onInit()
@@ -21,7 +22,7 @@ function onInit()
     }
 ?>
 ==
-<div class="container">
+<div class="container" style="margin-top: 120px;">
     <div class="row">
         <div class="col-xs">
 

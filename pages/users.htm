@@ -1,6 +1,6 @@
-title = "Users"
 url = "/users"
 layout = "default"
+title = "Users"
 is_hidden = 0
 robot_index = "index"
 robot_follow = "follow"
@@ -22,9 +22,10 @@ function onStart(){
 }
 ?>
 ==
+{% component 'session' %}
 <div class="container">
 	<h1 class="display-1">Users</h1>
-<{% component 'session' %}div class="container">
+<div class="container">
 	{% for user in users %}
 	<div class="row middle-xs userBox">
 		<div class="col-xs-3 col-md-1 userPic">

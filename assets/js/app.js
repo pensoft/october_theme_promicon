@@ -84,13 +84,13 @@ $(document).ready(function() {
         $(this).addClass('active');
     });
 
-    $('.news_column').attr({
-        'data-aos' : 'fade-up',
-        'data-aos-duration': '400',
-        'data-aos-anchor-placement':"center-bottom"
+    // $('.news_column').attr({
+    //     'data-aos' : 'fade-up',
+    //     'data-aos-duration': '400',
+    //     'data-aos-anchor-placement':"center-bottom"
 
-        // 'data-aos-delay': '100'
-    });
+    //     // 'data-aos-delay': '100'
+    // });
 
 
     // window.innerWidth <= 1024 ? $('.search-btn-responsive').css('visibility', 'visible') : $('.search-responsive').css('visibility', 'hidden');
