@@ -15,7 +15,7 @@
             <div class="news-container col-xs-12">
                 <div class="text-published">{{ highlight.published_at|date('d F Y') }}</div>
                 <div class="news-title">
-                    <h3 class="card-title"><a href="{{'news'|page}}/{{highlight.slug}}">{{ highlight.title|length > 69 ? highlight.title|slice(0, 69) ~ '...' : highlight.title  }}</a></h3>
+                    <h3 class="card-title"><a href="{{'news'|page}}/{{highlight.slug}}">{{ highlight.title|length > 50 ? highlight.title|slice(0, 50) ~ '...' : highlight.title  }}</a></h3>
                 </div>
                 <div class="row news-button-card">
                     <div class="col-xs-12">

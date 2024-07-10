@@ -665,3 +665,12 @@ function createTippy(element, options) {
 }
 
 init()
+
+// Append the footer to content wrapper for small devices
+$(document).ready(function() {
+    if ($('#layout-footer').length && $('.content-wrapper').length) {
+        if (window.matchMedia("(max-width: 960px)").matches) {
+            $('#layout-footer').appendTo('.content-wrapper');
+        }
+    }
+});
