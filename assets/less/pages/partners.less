@@ -257,6 +257,17 @@ overflow: hidden;
   });
 }
 
+
+.list-item{
+    .breakpoint-large-down({
+        .list-item-image{
+            background-size: contain !important;
+        }
+        a:first-child{
+            width: 100%;
+        }
+    });
+}
 @media (min-width: 1601px) {
   .innovation-second-row{
     justify-content: start !important;
