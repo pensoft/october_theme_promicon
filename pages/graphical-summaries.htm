@@ -63,11 +63,13 @@ function onStart(){
 	{# Use spaceless tag to remove spaces inside the A tag. #}
 	{% spaceless %}
 	{% if record.image %}
-		<div class="col-xs">
+		<div class="graphical-item">
 			<div class="card-container">
+				<div>
 				<span class="card_image_container" style="background: url({{record.image.thumb(243,243,{'mode':'crop'})}}) center center no-repeat;" title="{{record.title}}"></span>
-				<span class="card_title">{{record.title}}, {{record.file.size}}</span>
-				<br><a href="{{ record.file.path }}#file_name={{record.file.file_name}}" title="{{record.title}}" class="btn btn-primary" target="_blank" onclick="_gaq.push(['_trackEvent','Download','PDF',this.href]);">Download</a>
+				<span class="card_title">{{record.title}}</span>
+				</div>
+				<a href="{{ record.file.path }}#file_name={{record.file.file_name}}" title="{{record.title}}" class="btn btn-primary" target="_blank" onclick="_gaq.push(['_trackEvent','Download','PDF',this.href]);">Download</a>
 			</div>
 		</div>
 	{% endif %}

@@ -66,7 +66,7 @@ function onStart(){
 		<div class="col-xs">
 			<div class="card-container">
 				<span class="card_image_container" style="background: url({{record.flyer_image.thumb(243,243,{'mode':'crop'})}}) center center no-repeat;" title="{{record.name}}"></span>
-				<span class="card_title">{{record.name}}, {{record.file.size}}</span>
+				<span class="card_title">{{record.name}}</span>
 				<br><a href="{{ record.file.path }}#file_name={{record.file.file_name}}" title="{{record.name}}" class="btn btn-primary" target="_blank" onclick="_gaq.push(['_trackEvent','Download','PDF',this.href]);">Download</a>
 			</div>
 		</div>

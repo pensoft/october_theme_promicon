@@ -29,6 +29,12 @@
   }
 }
 
+.rio_collection{
+    .breakpoint-large-down({
+        margin-bottom: 100px !important;
+    });
+}
+
 .container:has(.searchLibrary){
     position: relative;
     padding-top: 0;
@@ -40,7 +46,7 @@
         right: 0;
         .breakpoint-large-down({
             position: absolute;
-            top: -16px;
+            top: -68px;
             height: 90px;
             left: 29px;
         });
@@ -117,9 +123,13 @@
         margin: 0 0 0 0;
         width: 50%!important;
         display: unset;
-        top: 207px;
+        top: 107px;
         left: 153px;
-    })
+    });
+
+    .breakpoint-small-down({
+        top: 207px;
+    });
 }
 
 .libraryForm{

@@ -14,6 +14,7 @@ baseUrl = "/news"
 templates = "template3"
 thumb_width = 250
 thumb_height = 250
+title_max_length = 150
 
 [jumbotron]
 jumbotron = "harnessing-power-nature"
@@ -24,7 +25,8 @@ description_limit = 0
 
 [Timeline]
 limit = 4
-upcoming = 0
+upcoming = 1
+marked_for_display = 1
 templates = "template1"
 ==
 <?php
@@ -69,13 +71,13 @@ function onStart(){
 </div>
 <div class="container-fluid banner timeline-bacteria-background">
 	<div class="container">
-		<h2 class="project_timeline">Project timeline</h2>
+		<h2 class="project_timeline">Events timeline</h2>
 		{% component 'Timeline' %}
 	</div>
 </div>
 
 <div class="container">
-	<h2 class="latest_updates">Follow latest updates</h2>
+	<h2 class="latest_updates">Follow our latest updates</h2>
 	<div class="row">
 		<!--<div class="col-sm-6 col-xs-12">
 			{% if this.theme.facebook %}

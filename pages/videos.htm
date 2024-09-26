@@ -1,12 +1,12 @@
-title = "Videos"
 url = "/media-center/videos"
 layout = "default"
+title = "Videos"
 is_hidden = 0
 robot_index = "index"
 robot_follow = "follow"
 
 [builderList mediaVideosList]
-modelClass = "pensoft\Media\Models\Videos"
+modelClass = "ABWebDevelopers\ImageResize\Models\ImagePermalink"
 scope = "-"
 scopeValue = "{{ :scope }}"
 displayColumn = "name"
@@ -14,7 +14,6 @@ noRecordsMessage = "No records found"
 detailsPage = "-"
 detailsUrlParameter = "id"
 pageNumber = "{{ :page }}"
-
 ==
 <?php
 use Pensoft\Media\Models\Videos;

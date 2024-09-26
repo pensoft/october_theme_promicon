@@ -66,32 +66,23 @@ return Redirect::to('/media-center/logo');
 	{% spaceless %}
 		{% if record.logo_image %}
 
-			<div class="col-md-4 col-xs-12">
-			<div class="row card-container-row mb-4">
+			<div class="col-md-3 col-xs-12">
+			<div class="card-container">
 				<div class="col-xs-12">
-						<h2>{{record.name}}</h2>
-						<p><img src="{{record.logo_image.path}}" title="{{record.name}}" style="max-width: 250px; height: 200px; object-fit: contain;"></p>
-						
+					<p><img src="{{record.logo_image.path}}" title="{{record.name}}" style="max-width: 250px; height: 200px; object-fit: contain;"></p>
+					<div class="card_title">{{record.name}}</div>
 				</div>
 				{% if record.file_jpg %}
-					<div class="col-xs">
-							<br><a href="{{ ''| page }}?{{queries}}&download={{record.file_jpg.id}}&file_name={{record.file_jpg.file_name|replace({' ': '_'})}}" title="Brand kit" class="btn btn-primary">Download JPG</a>
-					</div>
+						<br><a href="{{ ''| page }}?{{queries}}&download={{record.file_jpg.id}}&file_name={{record.file_jpg.file_name|replace({' ': '_'})}}" title="Brand kit" class="btn btn-primary media-btn">Download JPG</a>
 				{% endif %}
 				{% if record.file_png %}
-				<div class="col-xs">
-						<br><a href="{{ ''| page }}?{{queries}}&download={{record.file_png.id}}&file_name={{record.file_png.file_name|replace({' ': '_'})}}" title="Brand kit" class="btn btn-primary">Download PNG</a>
-				</div>
+						<br><a href="{{ ''| page }}?{{queries}}&download={{record.file_png.id}}&file_name={{record.file_png.file_name|replace({' ': '_'})}}" title="Brand kit" class="btn btn-primary media-btn">Download PNG</a>
 				{% endif %}
 				{% if record.file_eps %}
-				<div class="col-xs">
-						<br><a href="{{ ''| page }}?{{queries}}&download={{record.file_eps.id}}&file_name={{record.file_eps.file_name|replace({' ': '_'})}}" title="Brand kit" class="btn btn-primary">Download SVG</a>
-				</div>
+						<br><a href="{{ ''| page }}?{{queries}}&download={{record.file_eps.id}}&file_name={{record.file_eps.file_name|replace({' ': '_'})}}" title="Brand kit" class="btn btn-primary media-btn">Download SVG</a>
 				{% endif %}
 				{% if record.file_pdf %}
-				<div class="col-xs">
-						<br><a href="{{record.file_pdf.path}}" target="_blank" title="Brand kit" class="btn btn-primary">Download PDF</a>
-				</div>
+						<br><a href="{{record.file_pdf.path}}" target="_blank" title="Brand kit" class="btn btn-primary media-btn">Download PDF</a>
 				{% endif %}
 			</div>
 			</div>

@@ -34,7 +34,9 @@ function onStart(){
 		{% set detailsKeyColumn = mediaPressreleasesList.detailsKeyColumn %}
 		{% set detailsUrlParameter = mediaPressreleasesList.detailsUrlParameter %}
 
-		{% for record in records %}
+		{% set sortedRecords = records|sort((a, b) => b.date <=> a.date) %}
+
+		{% for record in sortedRecords %}
 		{# Use spaceless tag to remove spaces inside the A tag. #}
 		{% spaceless %}
 		<div class="col-md-5 col-xs-12">
@@ -49,7 +51,6 @@ function onStart(){
 				</div>
 			</div>
 		</div>
-
 
 		{% endspaceless %}
 		{% else %}

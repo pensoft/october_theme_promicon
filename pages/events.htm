@@ -11,6 +11,7 @@ limit = "null"
 category = "null"
 language = "en"
 redirect_to_detailed_page = 1
+default_view = "dayGridMonth"
 ==
 <?php
 use Pensoft\Calendar\Models\Entry;
@@ -50,6 +51,9 @@ function onStart(){
 ?>
 ==
 <div class="container">
+    {% if slug %}
+        <a href="/events" class="back-to mt-2"> &#10094; Back to all Events</a>
+    {% endif %}
 	<h1 class="display-1">Events</h1>
 	{% if not slug %}
 	<div class="row">

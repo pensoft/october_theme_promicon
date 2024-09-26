@@ -33,3 +33,30 @@
     // margin-bottom: 20px;
   }
 }
+
+.graphical-summaries .row{
+    .breakpoint-large-down({
+        display: flex;
+        justify-content: center;
+    });
+}
+.graphical-item{
+    margin-right: 20px;
+    .card-container{
+        min-height: 550px;
+        width: 240px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .breakpoint-large-down({
+            min-height: unset;
+        });
+    }
+    .breakpoint-large-down{
+        margin-right: unset;
+    }
+}
+
+.media-btn{
+    margin-bottom: 12px;
+}
