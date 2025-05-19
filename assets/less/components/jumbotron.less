@@ -153,7 +153,134 @@
             color: #FFFFFF;
             background: #8577B4 url("../../assets/images/button-arrow-home.svg") no-repeat;
             background-position: right 21px center;
-            margin: 0 10px;
+            margin: 0 5px;
         }
     }
+}
+
+
+.wp1, .wp2, .wp3, .wp4, .wp5, .wp6, .wp7, .wp8{
+    .container-fluid.banner{
+        &:before{
+            background: url("../../assets/images/WPPage-Background.png") center no-repeat;
+            background-size: cover;
+            width: 100%;
+            height: 467px;
+            content: '';
+            position: absolute;
+            z-index: 1;
+        }
+
+        .container{
+            padding: 0 0 50px 0!important;
+            .breakpoint-huge-down({
+                padding: 20px 20px 50px 20px!important;
+            });
+        }
+
+        .header-image-bar{
+            width: 100%;
+            height: 467px;
+            display: flex;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+            flex-direction: column;
+            color: #FFFFFF;
+            h1{
+                text-align: left;
+                font-weight: 600;
+                font-size: 57px;
+                line-height: 1.2em;
+                letter-spacing: 0px;
+                color: #FFFFFF;
+                .breakpoint-huge-down({
+                   font-size: 35px;
+                });
+            }
+            p{
+                color: #FFFFFF;
+            }
+        }
+
+
+        .work_packages{
+
+            margin-top: 50px;
+
+            .accordion-border{
+                width: calc(~'100% - 44px');
+
+                .breakpoint-huge-down({
+                    width: 90%;
+                });
+
+                .col-xs.start-xs{
+                    padding: 0;
+                }
+
+                img{
+                    mix-blend-mode: multiply;
+                }
+            }
+
+            .accordion-content{
+                display: none;
+                border-top: none;
+
+                img{
+                    width: auto;
+                }
+            }
+
+            .plusminus{
+                max-width: 15px;
+                height: 8px;
+                text-align: right;
+                vertical-align: middle;
+                color: @default-color;
+                font-size: 1em;
+                background: url(../../assets/images/Icons/arrow-purple.svg) top left no-repeat;
+                &.plus{
+                    background: url(../../assets/images/Icons/arrow-purple.svg) top left no-repeat;
+                }
+                &.minus{
+                    background: url(../../assets/images/Icons/arrow-purple.svg) top left no-repeat;
+                    -webkit-transform: scaleY(-1);
+                    transform: scaleY(-1);
+                }
+            }
+
+        }
+
+        h2{
+            font-weight: 600;
+            font-size: 40px;
+            line-height: 50px;
+            color: #111111;
+            margin-top: 100px;
+        }
+
+        .references{
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            li{
+                background: #FFFFFF;
+                box-shadow: 0px 0px 10px #00000029;
+                border-radius: 5px;
+                padding: 22px;
+                margin-bottom: 15px;
+
+                a{
+                    color: #A087BE!important;
+                    display: block;
+                    width: 100%;
+                    margin: 20px 0 0 0;
+                    word-break: break-all;
+                }
+            }
+        }
+    }
+
 }

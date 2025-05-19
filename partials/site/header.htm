@@ -30,7 +30,7 @@ numberOfLevels = 2
 	</nav>
 	{% endif %}
 	<nav class="navbar fixed " id="headernavbar" {% if user %} style="top:69px;"{% endif %}>
-		
+
 		<div class="row middle-xs width100">
 
 			<div class=" col-lg-3 col-md-9 col-xs-8">
@@ -50,7 +50,7 @@ numberOfLevels = 2
 				<div class="navbar-collapse collapse " id="headerNavbarNav" style="display: none;">
 					{% component 'menu' %}
 				</div>
-					
+
 			</div>
 		</div>
 		<div id="search" class="search" style="display: none;">
@@ -64,22 +64,6 @@ numberOfLevels = 2
 	</nav>
 </div>
 
-
-{% if this.theme.header_image %}
-<div class="header-image {{page_id}}">
-    {%if this.page.header_image %}
-        <div class="header-image-bar" style="background-image: url('{{this.page.header_image|media}}'); background-position: bottom center;"></div>
-    {%else%}
-        <div class="header-image-bar" style="background-image: url('{{this.theme.header_image.getPath()}}'); background-position: bottom center;"></div>
-    {%endif%}
-    <div class="jumbotron px-1" data-aos="fade-up">
-        <h1 class="underline white  {% if page_id == 'home'%}home-page-header{% endif %}">{%if page_title%} {{page_title}} {%else%} {{site_name}} {%endif%}</h1>
-        {% if page_id == 'home' and tag_line %}
-            <p>{{tag_line}}</p>
-        {% endif %}
-    </div>
-</div>
-{% endif %}
 
 {% if user %}
 <script>$(document).trigger('profile')</script>
