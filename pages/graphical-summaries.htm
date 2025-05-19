@@ -20,7 +20,7 @@ use Pensoft\Media\Models\Documents;
 use System\Models\File;
 
 function onStart(){
-	$this['mediaDocumentsList'] =  Documents::get();
+	$this['mediaDocumentsList'] =  Documents::get()->sortBy('title', SORT_NATURAL);
 	if(get('download')){
 		$file = File::find((int)get('download'));
 		$file_name = $file->getLocalPath();

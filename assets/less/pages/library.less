@@ -41,16 +41,23 @@
 
     .row.center-xs.mb-1{
         position: absolute;
-        top: 0px;
+        top: 20px;
         height: 90px;
         right: 0;
+        display: flex;
+        align-items: end;
         .breakpoint-large-down({
+            display: unset;
             position: absolute;
             top: -68px;
             height: 90px;
             left: 29px;
         });
     }
+}
+.library .tabs{
+    position: relative;
+    z-index: 4;
 }
 #searchLibrary{
     position: absolute;

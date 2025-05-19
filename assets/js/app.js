@@ -84,16 +84,10 @@ $(document).ready(function() {
         $(this).addClass('active');
     });
 
-    // $('.news_column').attr({
-    //     'data-aos' : 'fade-up',
-    //     'data-aos-duration': '400',
-    //     'data-aos-anchor-placement':"center-bottom"
-
-    //     // 'data-aos-delay': '100'
-    // });
-
-
-    // window.innerWidth <= 1024 ? $('.search-btn-responsive').css('visibility', 'visible') : $('.search-responsive').css('visibility', 'hidden');
+    // Rename Features to Graphical summaries
+    $('#mylibraryForm a').filter(function() {
+        return $(this).text() === 'PROMICON Features';
+    }).text('Graphical summaries');
 
     var responsiveSearch = $('.search-btn-responsive');
     window.innerWidth <= 1024 ? responsiveSearch.css('display', 'unset') : responsiveSearch.css('display', 'none');
