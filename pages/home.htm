@@ -32,13 +32,18 @@ templates = "template1"
 <?php
 use Pensoft\Media\Models\Presentations;
 use System\Models\File;
+use Pensoft\Accordions\Models\Item;
+
 
 function onStart(){
 	$this['policy_brief'] =  Presentations::orderBy('id', 'desc')->first();
+
+    $records = Item::where('category_id', 1)->orderBy('sort_order')->take(5)->get();
+    $this['wps'] = $records;
+
 }
 ?>
 ==
-<!-- latest from news -->
 <div class="container-fluid homepage-jumbotron-background">
 	<div class="container">
 		<div class="row">
@@ -46,89 +51,46 @@ function onStart(){
 			<div class="col-xs-12 col-md-6"></div>
 		</div>
 	</div>
-
 </div>
-<div class="container-fluid banner bg-secondary bacteria-background">
+
+<div class="container-fluid homepage-wp">
 	<div class="container">
-		<div class="row  between-md around-xs">
-			<div class="col-xs-12 col-md-6">
-				{% component 'article_highlights' %}
-				<p><a href="{{'news'|page}}" class="see_all_news">See all news</a></p>
-			</div>
-			<div class="col-xs-12 col-md-5">
-                <div class="policy_corner_coming_soon">
-                    <h3>Policy corner</h3>
-                    <div class="policy_corner_text">
-                        Embark on a transformative journey into the realm of natural bacteria and microbiomes, where science shapes the path into informed decision-making and sustainable solutions.
+        <h1>Access our results</h1>
+        {% if wps.count %}
+            <div class="container">
+                <div class="row mt-4 homepage-wp-row">
+                    {% for record in wps %}
+                    <div class="col-md-4 col-xs-12">
+                        <div class="wp-item">
+                            <div class="green_bullet">
+                                {% if record.prefix %} {{record.prefix}} {% endif %}
+                            </div>
+
+                            <h3 class="card-header">{% if record.title %} {{record.title}} {% endif %}</h3>
+                            <div class="card-body">
+                                <div class="body"><div class="dorsal">Read more</div></p>
+                                    <div class="toogle-contact-paragraphs" style="display: none;">{% if record.body %} {{record.body | raw}} {% endif %}</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <img src="{{policy_brief.presentation_image.path}}">
-                    <a href="{{'policy-briefs'|page}}" class="see_all_news">See policy briefs</a>
+                    {% endfor %}
                 </div>
+
             </div>
-		</div>
-		<div class="highlighted-news-background"></div>
+        {% endif %}
 	</div>
 </div>
-<div class="container-fluid banner timeline-bacteria-background">
+
+<div class="container-fluid homepage-discover">
 	<div class="container">
-		<h2 class="project_timeline">Events timeline</h2>
-		{% component 'Timeline' %}
-	</div>
-</div>
+        <h1>Discover more PROMICON outputs</h1>
+        <div class="buttons_container">
+            <a href="https://riojournal.com/topical_collection/239/" class="btn-primary" target="_blank">Open access RIO collection</a>
+            <a href="/media-center/policy-corner" class="btn-primary" target="_blank">Policy briefs</a>
+            <a href="/media-center/graphical-summaries" class="btn-primary" target="_blank">Graphical summaries</a>
+            <a href="/media-center/videos" class="btn-primary" target="_blank">Videos</a>
+        </div>
 
-<div class="container">
-	<h2 class="latest_updates">Follow our latest updates</h2>
-	<div class="row">
-		<!--<div class="col-sm-6 col-xs-12">
-			{% if this.theme.facebook %}
-			<div class="fb-page" 
-				data-href="{{this.theme.facebook_url}}" 
-				data-tabs="timeline" 
-				data-width="500" 
-				data-height="300" 
-				data-small-header="false" 
-				data-adapt-container-width="true" 
-				data-hide-cover="false" 
-				data-show-facepile="false">
-				<blockquote cite="{{this.theme.facebook_url}}" class="fb-xfbml-parse-ignore">
-					<a href="{{this.theme.facebook_url}}">{{this.theme.name}}</a>
-				</blockquote>
-			</div>
-			{% endif %}
-		</div>-->
-		<div class="col-sm-12 col-xs-12">
-			<div class="subscribe-container">
-				<div class="subscribe-items row">
-					{% if this.theme.twitter %}
-					<a href="{{this.theme.twitter_url}}" target="_blank" class="col-xs col-md-12 btn p-primary pr p-twitter big"></a>
-					{% endif %}
-					{% if this.theme.facebook %}
-					<a href="{{this.theme.facebook_url}}" target="_blank" class="col-xs col-md-12 btn pr p-primary p-facebook big"></a>
-					{% endif %}
-					{% if this.theme.linkedin %}
-					<a href="{{this.theme.linkedin_url}}" target="_blank" class="col-xs col-md-12 btn pr p-primary p-linkedin big"></a>
-					{% endif %}
-					{% if this.theme.youtube %}
-					<a href="{{this.theme.youtube_url}}" target="_blank" class="col-xs col-md-12 btn pr p-primary p-youtube big"></a>
-					{% endif %}
-					{% if this.theme.instagram %}
-					<a href="{{this.theme.instagram_url}}" target="_blank" class="col-xs col-md-12 btn pr p-primary p-instagram big"></a>
-					{% endif %}
-					{% if this.theme.researchgate %}
-					<a href="{{this.theme.researchgate_url}}" target="_blank" class="col-xs col-md-12 btn pr p-primary p-researchgate big" style="width: 64px;"></a>
-					{% endif %}
-				<!--/div>
-				<div class="subscribe-items d-flex justify-content-evenly flex-column"-->
-
-					{%if this.theme.subscribe%}
-					<a href="{{this.theme.subscribe}}" target="_blank" class="btn btn-primary">Subscribe for our newsletter</a>
-					{%endif%}
-
-					{%if this.theme.feedback%}
-					<a href="mailto:{{this.theme.feedback}}" class="btn btn-primary">Feedback</a>
-					{%endif%}
-				</div>
-			</div>
-		</div>
 	</div>
 </div>
