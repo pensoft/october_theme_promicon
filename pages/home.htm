@@ -59,7 +59,7 @@ function onStart(){
         {% if wps.count %}
             <div class="container">
                 <div class="row mt-4 homepage-wp-row">
-                    {% for record in wps %}
+                    {% for k, record in wps %}
                     <div class="col-md-4 col-xs-12">
                         <div class="wp-item">
                             <div class="green_bullet">
@@ -68,9 +68,8 @@ function onStart(){
 
                             <h3 class="card-header">{% if record.title %} {{record.title}} {% endif %}</h3>
                             <div class="card-body">
-                                <div class="body"><div class="dorsal">Read more</div></p>
-                                    <div class="toogle-contact-paragraphs" style="display: none;">{% if record.body %} {{record.body | raw}} {% endif %}</div>
-                                </div>
+                                <a href="/wp{{k+1}}" class="dorsal">Read more</a>
+
                             </div>
                         </div>
                     </div>
